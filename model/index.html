@@ -83,15 +83,13 @@
           $('#featureInput').val('');
           $('#valueInput').val('');  
       });
-<<<<<<< HEAD
-      
-      function displayChatMessage(name, text) {
-=======
       $('.nav-tabs').on('click', function() {
         console.log("Tab was clicked!")
       });
-       function displayChatMessage(name, text) {
->>>>>>> 1a3b72db4c15bf1f7e26621347fcb6cf1d602aa9
+
+
+      function displayChatMessage(name, text) {
+
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
