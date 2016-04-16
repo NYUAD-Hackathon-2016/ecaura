@@ -68,8 +68,8 @@
     </div>
     <script>
 
-      var firebasepath = "https://ecaura.firebaseIO.com"
-
+    var firebasepath = "https://ecaura.firebaseIO.com"
+    var myDataRef = new Firebase(firebasepath);
      myDataRef.on('value', function(snapshot) {
           //get_feature(firebasepath, "electricity")
           var x = get_org(firebasepath, "nyuad")
@@ -87,6 +87,9 @@
           $('#featureInput').val('');
           $('#valueInput').val('');  
 
+      });
+      $('.nav-tabs').on('click', function() {
+        console.log("Tab was clicked!")
       });
 
        function displayChatMessage(name, text) {
