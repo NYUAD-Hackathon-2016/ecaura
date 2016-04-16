@@ -45,24 +45,16 @@ function get_org(firebasepath, org) {
 	var orgRef = new Firebase(orgpath);
 
 	var results = new Object();
-
 	orgRef.orderByKey().on("value", function (snapshot) {
 		p = snapshot.val()
 		// For each feature, grab the feature name and the series
 		for (var feature in p) {
 		  if (p.hasOwnProperty(feature)) {
-		  	// var series = p[feature]["series"];
-		  	// var series_res = new Array();
-		  	// for (var element in series) {
-		  	// 	series_res.push(series[element])
-		  	// }
-
-		  	// results[feature] = series_res
-		  	results[feature] = parse_time_series(p[feature]["series"])
+		  	results[feature] = parse_time_series(p[feature]["series"]);
 		  }
 		}
-	})
-	return results
+	});
+	return results;
 }
 
 // Returns a JSON Object where the key is the org, and the val is the series.
