@@ -1,14 +1,14 @@
 #ParameterBox {
     position: relative;
     float: left;
-    width: 35%;
+    width: 30%;
     height: 100vh;
     background-color: #B9D7D9
 ;
 }#OutputBox {
     position: relative;
     float: right;
-    width: 65%;
+    width: 70%;
     height: 100vh;
     background-color: white;
 }#InputVisualization {
