@@ -294,34 +294,34 @@ path {
         
 
       });
-      $('.menu1').on('click', function() {
+      $('paper-tab[href="#menu1"]').on('click', function() {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
           data = x1["water"]
           add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
 
-      $('.menu2').on('click', function() {
+      $('paper-tab[href="#menu2"]').on('click', function() {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
           console.log(x1)
           data = x1["electricity"]
           add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
-      $('.menu3').on('click', function() {
+      $('paper-tab[href="#menu3"]').on('click', function() {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
           console.log(x1)
           data = x1["oil"]
         add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
-      $('.menu4').on('click', function() {
+      $('paper-tab[href="#menu4"]').on('click', function() {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
           data = x1["fuel"]
           add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
-      $('.menu5').on('click', function() {
+      $('paper-tab[href="#menu5"]').on('click', function() {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
           data = x1["food"]
