@@ -54,7 +54,6 @@ path {
             	<p class="ParameterDescription"> 
             <!-- SubContent for each tab -->
 
-
           			<input type='text' id='WaterReservoir' placeholder='Reservoir'><br>
           			<input type='text' id='GroundWater' placeholder='Ground Water'><br>
           			<input type='text' id='DesalinatedWater' placeholder='Desalinated Water'><br>
@@ -179,15 +178,16 @@ path {
     console.log("About to create listener")
      myDataRef.on('value', function(snapshot) {
       console.log("Change found.")
-          //get_feature(firebasepath, "electricity")
-        d3.select("svg").remove();
+        $('paper-tab[href="#menu1"]').trigger('click');
+
+        /*d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
           console.log(x1)
           data = x1["water"]
 
         console.log(data)
 
-        add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+        add_series_to_svg(data, parseDate, width, height, "#InputVisualization")*/
         });
       $('#submitButton').on('click', function () {
           var name = $('#nameInput').val();
@@ -201,9 +201,8 @@ path {
           $('#valueInput').val('');  
       });
       $('.nav-tabs').on('click', function() {
-        console.log("Tab was clicked!")
-        
-
+        console.log("Tab was clicked!");
+ 
       });
       $('paper-tab[href="#menu1"]').on('click', function() {
         d3.select("svg").remove();
@@ -215,14 +214,12 @@ path {
       $('paper-tab[href="#menu2"]').on('click', function() {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
-          console.log(x1)
           data = x1["electricity"]
           add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
       $('paper-tab[href="#menu3"]').on('click', function() {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
-          console.log(x1)
           data = x1["oil"]
         add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
