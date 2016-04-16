@@ -8,9 +8,10 @@ months = 12
 electricity_average = 4119916.
 oil_average = 22800.
 waste_average = 2929171.
-water_average = 8177.
+water_average = 4973.
+natural_gas = 2273.
 
-averages = np.array([electricity_average, oil_average, waste_average, water_average])
+averages = np.array([electricity_average, oil_average, waste_average, water_average, natural_gas])
 
 data = np.zeros((len(averages), months))
 

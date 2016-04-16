@@ -9,7 +9,10 @@
   <body>
     <div id='messagesDiv'></div>
     <input type='text' id='nameInput' placeholder='Name'>
-    <input type='text' id='messageInput' placeholder='Message'>
+    <input type='text' id='monthInput' placeholder='Month'>
+    <input type='text' id='yearInput' placeholder='Year'>
+    <input type='text' id='valueInput' placeholder='Value'>
+    <input type="submit" value="Add" class="button" id="submitDemo"/>
     <script>
     	var firebasepath = "https://ecaura.firebaseIO.com"
 
@@ -26,16 +29,32 @@
 		//   series: 2
 		// });
 
-      $('#messageInput').keypress(function (e) {
+      $('#valueInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
+          var month = $('#monthInput').val();
+          var year = $('#yearInput').val();
+          var val = $('#valueInput').val();
+
           //set(firebasepath, name, text, 1)
-          set_date(firebasepath, name, text, "2015 June", {date: "2015 June", value:500})
+          var newdate = year + " " + month
+          set_date(firebasepath, name, text, newdate, {date: newdate, value:val})
           //myDataRef.set({name: name, text: text});
           //set(myDataRef, name, "electricity", 1)
-          $('#messageInput').val('');
-        }
+          $('#nameInput').val('');
+          $('#monthInput').val('');
+          $('#yearInput').val('');
+          $('#valueInput').val('');        }
+      });
+      $('#submitDemo').on('click', function () {
+	      var name = $('#nameInput').val();
+	      var text = $('#valueInput').val();
+	      //set(firebasepath, name, text, 1)
+	      set_date(firebasepath, name, text, "2015 June", {date: "2015 June", value:500})
+	      //myDataRef.set({name: name, text: text});
+	      //set(myDataRef, name, "electricity", 1)
+	      $('#valueInput').val('');
+
       });
       myDataRef.on('value', function(snapshot) {
         //var message = snapshot.val();
