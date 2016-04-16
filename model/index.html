@@ -75,8 +75,9 @@
     <script>
     var firebasepath = "https://ecaura.firebaseIO.com"
 
+    var firebasepath = "https://ecaura.firebaseIO.com"
     var myDataRef = new Firebase(firebasepath);
-    myDataRef.on('value', function(snapshot) {
+     myDataRef.on('value', function(snapshot) {
           //get_feature(firebasepath, "electricity")
           var x = get_org(firebasepath, "nyuad")
           console.log(x)
@@ -94,8 +95,16 @@
           $('#valueInput').val('');  
 
       });
+<<<<<<< HEAD
       
       function displayChatMessage(name, text) {
+=======
+      $('.nav-tabs').on('click', function() {
+        console.log("Tab was clicked!")
+      });
+
+       function displayChatMessage(name, text) {
+>>>>>>> 1a3b72db4c15bf1f7e26621347fcb6cf1d602aa9
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
