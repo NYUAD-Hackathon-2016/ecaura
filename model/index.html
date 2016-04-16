@@ -1,9 +1,5 @@
-
-
 <!doctype html>
-
 <html>
-
   <head>
     <meta charset="utf-8"/>
     <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
@@ -15,11 +11,8 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Ecaura</title> 
   </head>
-
   <body>
-
     <!-- Left Side Form -->
-
     <div id="ParameterBox">
         <!-- Tab Titles (Parameters) -->
         <ul class="nav nav-tabs">
@@ -29,14 +22,12 @@
           <li><a data-toggle="tab" href="#menu4">Fuel</a></li>
           <li><a data-toggle="tab" href="#menu5">Food</a></li>
         </ul>
-
         <!-- Content for each tab -->
         <div class="tab-content">
           <div id="menu1" class="tab-pane fade in active">
             <p class="ParameterHeading">Water</p>
             <p class="ParameterDescription">   </p>
           </div>
-
           <div id="menu2" class="tab-pane fade">
             <p class="ParameterHeading">Electricity</p>
             <p class="ParameterDescription">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -54,22 +45,28 @@
             <p class="ParameterDescription">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
           </div>
     </div> 
-
+    <input type='text' id='nameInput' placeholder='Name'>
+          <input type='text' id='monthInput' placeholder='Month'>
+          <input type='text' id='yearInput' placeholder='Year'>
+          <input type='text' id='featureInput' placeholder='Feature (ex. electricity)'>
+          <input type='text' id='valueInput' placeholder='Value'>
+          <input type="submit" value="Add" class="button" id="submitButton"/>
+</div>
     <div id="OutputBox">
         <div id="InputVisualization">
-          <div id='messagesDiv'></div>  
-          <input type='text' id='nameInput' placeholder='Name'>
-          <input type='text' id='messageInput' placeholder='Message'>
+         <p> </p> 
+          ​
         </div>
-​
         <div id="OverallVisualization">
-          <p class="Heading">Overall Carbon Footprint</p>
+          <h1 class="Heading">OVERVIEW</h1>
         </div>
     </div>
+    
+    
     <script>
-
-      var firebasepath = "https://ecaura.firebaseIO.com"
-
+    var firebasepath = "https://ecaura.firebaseIO.com"
+    var firebasepath = "https://ecaura.firebaseIO.com"
+    var myDataRef = new Firebase(firebasepath);
      myDataRef.on('value', function(snapshot) {
           //get_feature(firebasepath, "electricity")
           var x = get_org(firebasepath, "nyuad")
@@ -81,25 +78,22 @@
           var year = $('#yearInput').val();
           var feature = $('#featureInput').val();
           var val = $('#valueInput').val();
-
           var newdate = year + " " + month
           set_date(firebasepath, name, feature, newdate, {date: newdate, value:val})
           $('#featureInput').val('');
           $('#valueInput').val('');  
-
+      });
+      $('.nav-tabs').on('click', function() {
+        console.log("Tab was clicked!")
       });
 
-       function displayChatMessage(name, text) {
+
+      function displayChatMessage(name, text) {
+
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
-
     </script>
-
     <script src='io.js'></script>
-
   </body>
-
 </html>
-
-
