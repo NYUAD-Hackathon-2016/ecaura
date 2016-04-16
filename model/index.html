@@ -157,7 +157,6 @@ path {
 	</div>
     	<div id="OutputBox">
         	<div id="InputVisualization">
-         		<p> </p> 
           ​
         	</div>
         <div id="OverallVisualization">
@@ -178,19 +177,23 @@ path {
     var parseDate = d3.time.format("%Y %B").parse;
 
     console.log("About to create listener")
-     myDataRef.on('value', function(snapshot) {
-      console.log("Change found.")
+    myDataRef.on('value', function(snapshot) {
+    console.log("Change found.")
           //get_feature(firebasepath, "electricity")
-        d3.select("svg").remove();
+        console.log(d3.select("svg"))
+        d3.select('svg').remove();
+        d3.select('svg').remove();
+        console.log(d3.select("svg"))
+
         var x1 = get_org(firebasepath, "nyuad")
           console.log(x1)
-          data = x1["electricity"]
+          data = x1["water"]
+
         console.log(data)
 
         add_series_to_svg(data, parseDate, "#InputVisualization")
         });
       $('#submitButton').on('click', function () {
-          alert("Clicked button")
           var name = "nyuad"
           var month = $('#monthInput').val();
           var year = $('#yearInput').val();
@@ -288,6 +291,41 @@ path {
       });
       $('.nav-tabs').on('click', function() {
         console.log("Tab was clicked!")
+        
+
+      });
+      $('.menu1').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          data = x1["water"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+
+      $('.menu2').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          console.log(x1)
+          data = x1["electricity"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+      $('.menu3').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          console.log(x1)
+          data = x1["oil"]
+        add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+      $('.menu4').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          data = x1["fuel"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+      $('.menu5').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          data = x1["food"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
 
 
@@ -297,7 +335,6 @@ path {
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>
-    <script src='io.js'></script>
 
   </body>
 </html>

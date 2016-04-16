@@ -10,6 +10,7 @@ function add_series_to_svg(data, parseDate, divid) {
     var width = 530
     var height = 200
 
+
 	var x = d3.time.scale().range([0, width]);
 	var y = d3.scale.linear().range([height, 0]);
 
@@ -31,7 +32,7 @@ function add_series_to_svg(data, parseDate, divid) {
         .attr("height", height + 70)
     .append("g")
         .attr("transform", 
-              "translate(" + 20 + "," + 50 + ")");
+              "translate(" + 50 + "," + 10 + ")");
 
     data.forEach(function(d) {
         d.date = parseDate(d.date);
@@ -46,6 +47,7 @@ function add_series_to_svg(data, parseDate, divid) {
 	data = data.sort(sortByDateAscending);
 	
     console.log(data)
+
 
 
 
