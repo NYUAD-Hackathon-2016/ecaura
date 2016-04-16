@@ -24,7 +24,7 @@ path {
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
 
         <script src='io.js'></script>
     <script src='../TestingLineChart/plot.js'></script>
@@ -128,7 +128,9 @@ path {
     
     <script>
     var firebasepath = "https://ecaura.firebaseIO.com"
+    console.log("Starting request")
     var myDataRef = new Firebase(firebasepath);
+    console.log("Connected")
     // Set the dimensions of the canvas / graph
     var margin = {top: 30, right: 20, bottom: 30, left: 50},
       width = 600 - margin.left - margin.right,
@@ -137,8 +139,9 @@ path {
     // Parse the date / time
     var parseDate = d3.time.format("%Y %B").parse;
 
-
+    console.log("About to create listener")
      myDataRef.on('value', function(snapshot) {
+      console.log("Change found.")
           //get_feature(firebasepath, "electricity")
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
