@@ -1,8 +1,16 @@
-function add_series_to_svg(data, parseDate, width, height, divid) {
+function add_series_to_svg(data, parseDate, divid) {
 	// Set the dimensions of the canvas / graph
 	// Set the ranges
-    console.log("yo");
-    console.log(data);
+
+    //var margin = {top: 30, right: 20, bottom: 30, left: 50};
+
+    // var  width = 600 - margin.left - margin.right;
+    // var  height = 270 - margin.top - margin.bottom;
+
+    var width = 530
+    var height = 200
+
+
 	var x = d3.time.scale().range([0, width]);
 	var y = d3.scale.linear().range([height, 0]);
 
@@ -20,17 +28,28 @@ function add_series_to_svg(data, parseDate, width, height, divid) {
 
     var svg = d3.select(divid)
     .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", width + 70)
+        .attr("height", height + 70)
     .append("g")
         .attr("transform", 
-              "translate(" + margin.left + "," + margin.top + ")");
+              "translate(" + 50 + "," + 10 + ")");
 
     data.forEach(function(d) {
         d.date = parseDate(d.date);
         d.value = +d.value;
     });
-    console.log(data);
+
+    function sortByDateAscending(a, b) {
+    // Dates will be cast to numbers automagically:
+    	return a.date - b.date;
+	}
+
+	data = data.sort(sortByDateAscending);
+	
+    console.log(data)
+
+
+
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
