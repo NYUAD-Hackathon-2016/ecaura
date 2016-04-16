@@ -37,15 +37,18 @@ function get_org(firebasepath, org) {
 
 	orgRef.orderByKey().on("value", function (snapshot) {
 		p = snapshot.val()
-		//results = new Object()
 		// For each feature, grab the feature name and the series
 		for (var feature in p) {
 		  if (p.hasOwnProperty(feature)) {
-		  	results[feature] = p[feature]["series"]
+		  	var series = p[feature]["series"];
+		  	var series_res = new Array();
+		  	for (var element in series) {
+		  		series_res.push(series[element])
+		  	}
+
+		  	results[feature] = series_res
 		  }
 		}
-		//console.log(results)
-		//return results
 	})
 	return results
 }
