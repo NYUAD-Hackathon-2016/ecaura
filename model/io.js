@@ -15,18 +15,6 @@ function set_date(firebasepath, org, feature, date, dateobject) {
 	dateRef.set(dateobject);
 }
 
-// Get the Time series for the organization "org", for the feature "feature"
-// Ex: get_org_feature(firebasepath, "AppleInc", "electricity")
-function get_org_feature(firebasepath, org, feature){
-	var path = firebasepath + "/orgs/" + org + /data/ + feature;
-	var featureRef = new Firebase(path)
-	featureRef.on("value", function(snapshot) {
-		return snapshot.val()
-	}, function (errorObject) {
-  		console.log("The read failed: " + errorObject.code);
-	});
-}
-
 // Convert from the database time series format to the visualize time series format
 function parse_time_series(series) {
 	var series_res = new Array();
@@ -35,6 +23,20 @@ function parse_time_series(series) {
   	}
 	return series_res
 }
+
+// Get the Time series for the organization "org", for the feature "feature"
+// Ex: get_org_feature(firebasepath, "AppleInc", "electricity")
+function get_org_feature(firebasepath, org, feature){
+	var path = firebasepath + "/orgs/" + org + "/data/" + feature + "/series/";
+	var featureRef = new Firebase(path)
+	featureRef.on("value", function(snapshot) {
+		return parse_time_series(snapshot.val());
+	}, function (errorObject) {
+  		console.log("The read failed: " + errorObject.code);
+	});
+}
+
+
 
 // Given an organization, returns a JSON object, with key = featurename, and value = timeseries.
 function get_org(firebasepath, org) {
