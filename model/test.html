@@ -3,6 +3,7 @@
   <head>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src='io.js'></script>
     <link rel='stylesheet' type='text/css' href='/resources/tutorial/css/example.css'>
   </head>
   <body>
@@ -10,18 +11,35 @@
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
     <script>
-      var myDataRef = new Firebase('https://ecaura.firebaseIO.com');
+    	var firebasepath = "https://ecaura.firebaseIO.com"
+
+	  var myDataRef = new Firebase(firebasepath);
+      //var usersRef = ref.child("users");
+      // set(myDataRef, "alanisawesome", "apple", 1)
+      // set(myDataRef, "gracehop", "microsoft", 2)
+  //     usersRef.child("alanisawesome").set({
+		//   feature: "apple",
+		//   series: 1
+		// });
+		// usersRef.child("gracehop").set({
+		//   feature: "microsoft",
+		//   series: 2
+		// });
+
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
+         set(firebasepath, name, text, 1)
+          //myDataRef.set({name: name, text: text});
+          //set(myDataRef, name, "electricity", 1)
           $('#messageInput').val('');
         }
       });
-      myDataRef.on('child_added', function(snapshot) {
-        var message = snapshot.val();
-        displayChatMessage(message.name, message.text);
+      myDataRef.on('value', function(snapshot) {
+        //var message = snapshot.val();
+        //console.log(message)
+
       });
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
