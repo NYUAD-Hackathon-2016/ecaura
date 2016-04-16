@@ -1,0 +1,28 @@
+#ParameterBox {
+    position: relative;
+    float: left;
+    width: 25%;
+    height: 100vh;
+    background-color: #B9D7D9
+;
+}#OutputBox {
+    position: relative;
+    float: right;
+    width: 75%;
+    height: 100vh;
+    background-color: grey;
+}#InputVisualization {
+    position: relative;
+    float: right;
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+}#OverallVisualization {
+    position: relative;
+    float: right;
+    width: 100%;
+    height: 50vh;
+    background-color: green;
+}
+/*This is to style the headings within each tab, e.g. Water, Fuel, etc.*/
+.ParameterHeading {}
