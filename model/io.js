@@ -1,11 +1,14 @@
-
+// Adds a time series "series" for the organization named "org" for the feature named "feature"
+// Series should be a JSON Object containing the time series.
+// Ex: set(firebasepath, "AppleInc", "electricity", TimeSeriesObject)
 function set(firebasepath, org, feature, series) {
 	var path = firebasepath + "/orgs/" + org + "/data/" + feature;
 	var featureRef = new Firebase(path);
 	featureRef.set({name: feature, series: series});
 }
 
-// Get the 
+// Get the Time series for the organization "org", for the feature "feature"
+// Ex: get_org_feature(firebasepath, "AppleInc", "electricity")
 function get_org_feature(firebasepath, org, feature){
 	var path = firebasepath + "/orgs/" + org + /data/ + feature;
 	var featureRef = new Firebase(path)
