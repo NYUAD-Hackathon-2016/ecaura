@@ -36,11 +36,11 @@ path {
     <div id="ParameterBox">
         <!-- Tab Titles (Parameters) -->
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#menu1">Water</a></li>
-          <li><a data-toggle="tab" href="#menu2">Electricity</a></li>
-          <li><a data-toggle="tab" href="#menu3">Waste</a></li>
-          <li><a data-toggle="tab" href="#menu4">Fuel</a></li>
-          <li><a data-toggle="tab" href="#menu5">Food</a></li>
+          <li class="active"><a data-toggle="tab" class="menu1"  href="#menu1">Water</a></li>
+          <li><a data-toggle="tab" class="menu2" href="#menu2">Electricity</a></li>
+          <li><a data-toggle="tab" class="menu3"  href="#menu3">Waste</a></li>
+          <li><a data-toggle="tab" class="menu4"  href="#menu4">Fuel</a></li>
+          <li><a data-toggle="tab" class="menu5"  href="#menu5">Food</a></li>
         </ul>
         <!-- Content for each tab -->
         <div class="tab-content">
@@ -59,7 +59,7 @@ path {
 
               </p>
           </div>
-          <div id="menu2" class="tab-pane fade">
+          <div id="menu2" class="tab-pane fade elec">
             <p class="ParameterHeading">Electricity</p>
             <p class="ParameterDescription">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
@@ -143,7 +143,8 @@ path {
         d3.select("svg").remove();
         var x1 = get_org(firebasepath, "nyuad")
           console.log(x1)
-          data = x1["electricity"]
+          data = x1["water"]
+
         console.log(data)
 
         add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
@@ -161,6 +162,41 @@ path {
       });
       $('.nav-tabs').on('click', function() {
         console.log("Tab was clicked!")
+        
+
+      });
+      $('.menu1').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          data = x1["water"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+
+      $('.menu2').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          console.log(x1)
+          data = x1["electricity"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+      $('.menu3').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          console.log(x1)
+          data = x1["oil"]
+        add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+      $('.menu4').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          data = x1["fuel"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
+      });
+      $('.menu5').on('click', function() {
+        d3.select("svg").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          data = x1["food"]
+          add_series_to_svg(data, parseDate, width, height, "#InputVisualization")
       });
 
 
