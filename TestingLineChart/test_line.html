@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+body { font: 12px Arial;}
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+</style>
+  <head>
+    <meta charset="utf-8"/>
+    <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src='../model/io.js'></script>
+        <script src='plot.js'></script>
+
+
+    <title>Ecaura</title> 
+  </head>
+<body>
+<div id="graph" style="width:500px; height:300px"> </div>
+ <input type="submit" value="Remove" class="button" id="removeButton"/>
+ <input type="submit" value="Add" class="button" id="addButton"/>
+
+
+<!-- load the d3.js library -->    
+
+<script>
+      $('#removeButton').on('click', function () {
+        // Parse the date / time
+        //var parseDate = d3.time.format("%Y %B").parse;
+        d3.select("svg").remove();
+
+      });
+
+// Set the dimensions of the canvas / graph
+var margin = {top: 30, right: 20, bottom: 30, left: 50},
+    width = 600 - margin.left - margin.right,
+    height = 270 - margin.top - margin.bottom;
+
+// Parse the date / time
+var parseDate = d3.time.format("%Y %B").parse;
+
+    var firebasepath = "https://ecaura.firebaseIO.com"
+    var myDataRef = new Firebase(firebasepath);
+
+      $('#addButton').on('click', function () {
+        // Parse the date / time
+        //var parseDate = d3.time.format("%Y %B").parse;
+        d3.select("g").remove();
+        var x1 = get_org(firebasepath, "nyuad")
+          console.log(x1)
+          data = x1["electricity"]
+        console.log(data)
+
+        add_series_to_svg(data, parseDate, width, height)
+
+      });
+        myDataRef.on('value', function(snapshot) {
+          //get_feature(firebasepath, "electricity")
+          var x1 = get_org(firebasepath, "nyuad")
+          console.log(x1)
+          data = x1["electricity"]
+          add_series_to_svg(data, parseDate, width, height)
+
+
+});
+
+</script>
+</body>
