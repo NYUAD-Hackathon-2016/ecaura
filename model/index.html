@@ -185,6 +185,25 @@ path {
     var parseDate = d3.time.format("%Y %B").parse;
 
     console.log("About to create listener")
+
+    myDataRef.on('value', function(snapshot) {
+
+        //$(".iron-selected").trigger( "click" );
+        console.log("Change found.")
+          //get_feature(firebasepath, "electricity")
+        console.log(d3.select("svg"))
+        d3.select('svg').remove();
+        d3.select('svg').remove();
+        console.log(d3.select("svg"))
+
+        var x1 = get_org(firebasepath, "nyuad")
+          console.log(x1)
+          data = x1["water"]
+
+        console.log(data)
+
+        add_series_to_svg(data, parseDate, "#InputVisualization")
+        
         });
       $('#submitButton').on('click', function () {
           var name = "nyuad"

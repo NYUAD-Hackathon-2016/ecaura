@@ -7,6 +7,41 @@ function set(firebasepath, org, feature, series) {
 	featureRef.set({name: feature, series: series});
 }
 
+function add_to_date(firebasepath, date, val, feature) {
+	var path = firebasepath + "/dates/" + date + "/" + feature;
+	var dateRef = new Firebase(path)
+	dateRef.transaction(function(currentDateInfo) {
+   // If /users/fred/rank has never been set, currentRank will be null.
+   if (currentDateInfo == null) {
+   		return {total: parseInt(val) , count: 1}
+   }
+
+  		return {total: currentDateInfo.total + parseInt(val) , count: currentDateInfo.count + 1}
+	});
+}
+
+function get_average_series(firebasepath, feature) {
+	var path = firebasepath + "/dates/"
+	var dateRef = new Firebase(path);
+	var results = new Array()
+
+	// Query orgs that have the feature
+	dateRef.orderByChild(feature + "/total").on("value", function (snapshot) {
+		//console.log(snapshot.val())
+		p = snapshot.val()
+		// For each org, grab the orgname and the series
+		for (var date in p) {
+		  if (p.hasOwnProperty(date)) {
+		  	results.push({date: date, average: p[date][feature]["total"]/p[date][feature]["count"]})
+		    //console.log(orgname + " -> " + p[orgname]);
+		  }
+		}
+		//console.log(results)
+		//return results
+	});
+	return results
+}
+
 // Adds a single data to the database.
 // set_date(firebasepath, "AppleInc", "electricity", "2015 June", {date: "2015 June", value:500})
 function set_date(firebasepath, org, feature, date, dateobject) {
@@ -63,12 +98,12 @@ function get_feature(firebasepath, feature){
 	// Instantiate orgpath
 	var orgpath = firebasepath + "/orgs/";
 	var orgRef = new Firebase(orgpath);
+		var results = new Object()
 
 	// Query orgs that have the feature
 	orgRef.orderByChild("data/" + feature + "/name").equalTo(feature).on("value", function (snapshot) {
 		//console.log(snapshot.val())
 		p = snapshot.val()
-		var results = new Object()
 		// For each org, grab the orgname and the series
 		for (var orgname in p) {
 		  if (p.hasOwnProperty(orgname)) {
@@ -77,6 +112,6 @@ function get_feature(firebasepath, feature){
 		  }
 		}
 		//console.log(results)
-		return results
 	});
+		return results
 }
