@@ -1,7 +1,7 @@
 #ParameterBox {
     position: relative;
     float: left;
-    width: 30%;
+    width: 35%;
     height: 100vh;
     background-color: #B9D7D9;
 }
@@ -9,7 +9,7 @@
 #OutputBox {
     position: relative;
     float: right;
-    width: 70%;
+    width: 65%;
     height: 100vh;
     background-color: white;
 }#InputVisualization {

@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link href="https://polygit.org/components/polymer/polymer.html" rel="import">
+<link rel="import" href="https://polygit.org/components/paper-tabs/paper-tabs.html">
     <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
-    <link rel='stylesheet' type='text/css' href='/resources/tutorial/css/example.css'>
     <link rel='stylesheet' type='text/css' href='index.css'>
-   <!--   --><link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -16,49 +17,84 @@
     <div id="ParameterBox">
         <!-- Tab Titles (Parameters) -->
         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#menu1">Water</a></li>
-          <li><a data-toggle="tab" href="#menu2">Electricity</a></li>
-          <li><a data-toggle="tab" href="#menu3">Waste</a></li>
-          <li><a data-toggle="tab" href="#menu4">Fuel</a></li>
-          <li><a data-toggle="tab" href="#menu5">Food</a></li>
+
+        <paper-tabs >
+  		<li class="active"><paper-tab data-toggle="tab" href="#menu1">Water</paper-tab></li>
+         <li><paper-tab data-toggle="tab" href="#menu2">Electricity</paper-tab></li>
+          <li><paper-tab data-toggle="tab" href="#menu3">Waste</paper-tab></li>
+          <li><paper-tab data-toggle="tab" href="#menu4">Fuel</paper-tab></li>
+          <li><paper-tab data-toggle="tab" href="#menu5">Food</paper-tab></li>
         </ul>
         <!-- Content for each tab -->
-        <div class="tab-content">
-          <div id="menu1" class="tab-pane fade in active">
-            <p class="ParameterHeading">Water</p>
-            <p class="ParameterDescription"> 
+        <div class="tab-content"> 
 
 
-	<input type='text' id='nameInput' placeholder='Name'>
-          <input type='text' id='monthInput' placeholder='Month'>
-          <input type='text' id='yearInput' placeholder='Year'>
-          <input type='text' id='featureInput' placeholder='Feature (ex. electricity)'>
-          <input type='text' id='valueInput' placeholder='Value'>
-          <input type="submit" value="Add" class="button" id="submitButton"/>
+          	<div id="menu1" class="tab-pane fade in active">
+          		<p class="ParameterHeading">Water</p>
+            	<p class="ParameterDescription"> 
+            <!-- SubContent for each tab -->
 
 
-              </p>
-          </div>
-          <div id="menu2" class="tab-pane fade">
-            <p class="ParameterHeading">Electricity</p>
-            <p class="ParameterDescription">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div id="menu3" class="tab-pane fade">
-            <p class="ParameterHeading">Waste</p>
-            <p class="ParameterDescription">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-          </div>
-          <div id="menu4" class="tab-pane fade">
-            <p class="ParameterHeading">Fuel</p>
-            <p class="ParameterDescription">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-          </div>
-          <div id="menu5" class="tab-pane fade">
-            <p class="ParameterHeading">Food</p>
-            <p class="ParameterDescription">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-          </div>
-    </div> 
+          			<input type='text' id='WaterReservoir' placeholder='Reservoir'><br>
+          			<input type='text' id='GroundWater' placeholder='Ground Water'><br>
+          			<input type='text' id='DesalinatedWater' placeholder='Desalinated Water'><br>
+          			<input type='text' id='RecycledWater' placeholder='RecycledWater'><br>
+          		
+            	</p>
+         	</div>
+          
+
+          	<div id="menu2" class="tab-pane fade">
+            	<p class="ParameterHeading">Electricity</p>
+            	<p class="ParameterDescription"><input type='text' id='Nuclear' placeholder='Nuclear'><br>
+            <!-- SubContent for each tab -->
+          			<input type='text' id='Solar' placeholder='Solar'><br>
+          			<input type='text' id='Wind' placeholder='Wind'><br>
+          			<input type='text' id='HydroElectric' placeholder='HydroElectric'><br>
+          			<input type='text' id='FossilFuels' placeholder='Fossil Fuels'>
+          		</p>
+          	</div>
+          
+
+
+          	<div id="menu3" class="tab-pane fade">
+            	<p class="ParameterHeading">Waste</p>
+            	<p class="ParameterDescription"> 
+    	    <!-- SubContent for each tab -->
+
+            		<input type='text' id='Plastic' placeholder='Plastic'><br>
+          			<input type='text' id='Paper' placeholder='Paper'><br>
+          			<input type='text' id='Glass' placeholder='Glass'><br>
+          			<input type='text' id='Metal' placeholder='Metal'><br>
+          			<input type='text' id='Landfill' placeholder='Landfill'></p>
+          	</div>
+          
+
+          	<div id="menu4" class="tab-pane fade">
+            	<p class="ParameterHeading">Fuel</p>
+            	<p class="ParameterDescription">
+            <!-- SubContent for each tab -->
+					<input type='text' id='NaturalGas' placeholder='Natural Gas'><br>
+          			<input type='text' id='FuelOil' placeholder='Fuel Oil'><br>
+          			<input type='text' id='LPG' placeholder='LPG'></p>
+          	</div>
+          
+
+          	<div id="menu5" class="tab-pane fade">
+            	<p class="ParameterHeading">Food</p>
+            	<p class="ParameterDescription">
+            <!-- SubContent for each tab -->
+					<input type='text' id='Beef' placeholder='Amount of Beef '><br>
+          			<input type='text' id='Chicken' placeholder='Chicken'><br>
+          			<input type='text' id='Dairy' placeholder='Dairy'><br>
+          			<input type='text' id='Veggies' placeholder='Veggies'><br>
+          			<input type='text' id='Fruits' placeholder='Fruits'><br>
+          			<input type='text' id='Grains' placeholder='Grains'></p>
+          	</div>
+    	</div> 
     
 
-          <select id='monthInput' >
+<select id='monthInput' >
     <option value=''>--Select Month--</option>
     <option selected value='1'>Janaury</option>
     <option value='2'>February</option>
@@ -88,20 +124,20 @@
     <option value='2014'>2014</option>
     <option value='2015'>2015</option>
     </select> 
-
-          <input type='text' id='nameInput' placeholder='Organization'>
-          <input type='text' id='featureInput' placeholder='Feature (ex. electricity)'>
-          <input type='text' id='valueInput' placeholder='Value'>
+    <br>
           <input type="submit" value="Add" class="button" id="submitButton"/>
+    
 
-</div>
-    <div id="OutputBox">
-        <div id="InputVisualization">
-         <p> </p> 
+ <!-- Right Side Panel -->
+
+	</div>
+    	<div id="OutputBox">
+        	<div id="InputVisualization">
+         		<p> </p> 
           ​
-        </div>
+        	</div>
         <div id="OverallVisualization">
-          <h1 class="Heading">OVERVIEW</h1>
+        	<h1 class="Heading">OVERVIEW</h1>
         </div>
     </div>
     
@@ -138,5 +174,6 @@
       };
     </script>
     <script src='io.js'></script>
+
   </body>
 </html>
