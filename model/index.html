@@ -59,18 +59,24 @@
         <div id="InputVisualization">
           <div id='messagesDiv'></div>  
           <input type='text' id='nameInput' placeholder='Name'>
-          <input type='text' id='messageInput' placeholder='Message'>
+          <input type='text' id='monthInput' placeholder='Month'>
+          <input type='text' id='yearInput' placeholder='Year'>
+          <input type='text' id='featureInput' placeholder='Feature (ex. electricity)'>
+          <input type='text' id='valueInput' placeholder='Value'>
+          <input type="submit" value="Add" class="button" id="submitButton"/>
         </div>
 ​
         <div id="OverallVisualization">
           <p class="Heading">Overall Carbon Footprint</p>
         </div>
     </div>
+    
+    
     <script>
+    var firebasepath = "https://ecaura.firebaseIO.com"
 
-      var firebasepath = "https://ecaura.firebaseIO.com"
-
-     myDataRef.on('value', function(snapshot) {
+    var myDataRef = new Firebase(firebasepath);
+    myDataRef.on('value', function(snapshot) {
           //get_feature(firebasepath, "electricity")
           var x = get_org(firebasepath, "nyuad")
           console.log(x)
@@ -88,12 +94,11 @@
           $('#valueInput').val('');  
 
       });
-
-       function displayChatMessage(name, text) {
+      
+      function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
-
     </script>
 
     <script src='io.js'></script>
