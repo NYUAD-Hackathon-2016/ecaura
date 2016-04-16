@@ -1,0 +1,37 @@
+[
+  {
+    "Date": "2016 Jan",
+    "Electricity": 2704659,
+    "Average": 4499890
+  },
+  {
+    "Date": "2016 Feb",
+    "Electricity": 2027307,
+    "Average": 3277946
+  },
+  {
+    "Date": "2016 Mar",
+    "Electricity": 1208495,
+    "Average": 2141490
+  },
+  {
+    "Date": "2016 Apr",
+    "Electricity": 1140516,
+    "Average": 1938695
+  },
+  {
+    "Date": "2016 June",
+    "Electricity": 2027307,
+    "Average": 3277946
+  },
+  {
+    "Date": "2016 July",
+    "Electricity": 1208495,
+    "Average": 2141490
+  },
+  {
+    "Date": "2016 Aug",
+    "Electricity": 1140516,
+    "Average": 1938695
+  }
+]

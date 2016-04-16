@@ -36,7 +36,47 @@ path {
     <!-- Left Side Form -->
     <div id="ParameterBox">
         <!-- Tab Titles (Parameters) -->
-        <ul class="nav nav-tabs">
+        <!-- Logo and Date -->
+       	<div id="logo">
+
+        	<img src="ecauragreen.png" alt="logo" height="20px" >
+
+          	<select id='monthInput' >
+    		<option value=''>Month</option>
+		    <option selected value='january'>Jan</option>
+		    <option value='february'>Feb</option>
+		    <option value='march'>Mar</option>
+		    <option value='april'>Apr</option>
+		    <option value='may'>May</option>
+		    <option value='june'>Jun</option>
+		    <option value='july'>Jul</option>
+		    <option value='august'>Aug</option>
+		    <option value='september'>Sep</option>
+		    <option value='october'>Oct</option>
+		    <option value='november'>Nov</option>
+		    <option value='december'>Dec</option>
+		    </select> 
+
+		    <select id='yearInput'>
+		    <option value=''>Year</option>
+		    <option value='2006'>2006</option>
+		    <option value='2007'>2007</option>
+		    <option value='2008'>2008</option>
+		    <option value='2009'>2009</option>
+		    <option value='2010'>2010</option>
+		    <option value='2011'>2011</option>
+		    <option value='2012'>2012</option>
+		    <option value='2013'>2013</option>
+		    <option value='2014'>2014</option>
+		    <option value='2015'>2015</option>
+		    <option selected value='2016'>2016</option>
+		    <option value='2017'>2017</option>
+		    <option value='2018'>2018</option>
+		    <option value='2019'>2019</option>
+		    <option value='2020'>2020</option>
+		    </select> 
+    		<br>
+        </div>
 
         <paper-tabs >
   		<li class="active"><paper-tab data-toggle="tab" href="#menu1">Water</paper-tab></li>
@@ -54,23 +94,23 @@ path {
             	<p class="ParameterDescription"> 
             <!-- SubContent for each tab -->
 
-          			<input type='text' id='WaterReservoir' placeholder='Reservoir'><br>
-          			<input type='text' id='GroundWater' placeholder='Ground Water'><br>
-          			<input type='text' id='DesalinatedWater' placeholder='Desalinated Water'><br>
-          			<input type='text' id='RecycledWater' placeholder='RecycledWater'><br>
-          		
+          			<paper-input id='WaterReservoir' label='Water Reservoir (litres/month)'></paper-input><br>
+          			<paper-input id='GroundWater' label='Ground Water (litres/month)'></paper-input><br>
+          			<paper-input id='DesalinatedWater' label='Desalinated Water (litres/month)'></paper-input><br>
+          			<paper-input id='RecycledWater' label='RecycledWater (litres/month)'></paper-input><br>          		
             	</p>
          	</div>
           
 
           	<div id="menu2" class="tab-pane fade">
-            	<p class="ParameterHeading">Electricity</p>
-            	<p class="ParameterDescription"><input type='text' id='Nuclear' placeholder='Nuclear'><br>
-            <!-- SubContent for each tab -->
-          			<input type='text' id='Solar' placeholder='Solar'><br>
-          			<input type='text' id='Wind' placeholder='Wind'><br>
-          			<input type='text' id='HydroElectric' placeholder='HydroElectric'><br>
-          			<input type='text' id='FossilFuels' placeholder='Fossil Fuels'>
+
+            	<p class="ParameterDescription">
+            	 <!-- SubContent for each tab -->
+            	<paper-input   id='Nuclear' label='Nuclear (kWh/month)'></paper-input><br>
+          			<paper-input   id='Solar' label='Solar (kWh/month)'></paper-input><br>
+          			<paper-input  id='Wind' label='Wind (kWh/month)'></paper-input><br>
+          			<paper-input   id='HydroElectric' label='HydroElectric (kWh/month)'></paper-input><br>
+          			<paper-input  id='FossilFuels' label='Fossil Fuels (kWh/month)'></paper-input>
           		</p>
           	</div>
           
@@ -81,11 +121,12 @@ path {
             	<p class="ParameterDescription"> 
     	    <!-- SubContent for each tab -->
 
-            		<input type='text' id='Plastic' placeholder='Plastic'><br>
-          			<input type='text' id='Paper' placeholder='Paper'><br>
-          			<input type='text' id='Glass' placeholder='Glass'><br>
-          			<input type='text' id='Metal' placeholder='Metal'><br>
-          			<input type='text' id='Landfill' placeholder='Landfill'></p>
+
+            		<paper-input  id='Plastic' label='Plastic (kg/month)'></paper-input><br>
+          			<paper-input  id='Paper' label='Paper (kg/month)'></paper-input><br>
+          			<paper-input  id='Glass' label='Glass (kg/month)'></paper-input><br>
+          			<paper-input  id='Metal' label='Metal (kg/month)'></paper-input><br>
+          			<paper-input  id='Landfill' label='Landfill (kg/month)'></paper-input></p>
           	</div>
           
 
@@ -93,9 +134,10 @@ path {
             	<p class="ParameterHeading">Fuel</p>
             	<p class="ParameterDescription">
             <!-- SubContent for each tab -->
-					<input type='text' id='NaturalGas' placeholder='Natural Gas'><br>
-          			<input type='text' id='FuelOil' placeholder='Fuel Oil'><br>
-          			<input type='text' id='LPG' placeholder='LPG'></p>
+
+					<paper-input  id='NaturalGas' label='Natural Gas (litres/month)'></paper-input><br>
+          			<paper-input id='FuelOil' label='Fuel Oil (litres/month)'></paper-input><br>
+          			<paper-input id='LPG' label='LPG (litres/month)'></paper-input></p>
           	</div>
           
 
@@ -112,43 +154,7 @@ path {
           	</div>
     	</div> 
     
-
-<select id='monthInput' >
-    <option value=''>--Select Month--</option>
-    <option selected value='january'>Janaury</option>
-    <option value='february'>February</option>
-    <option value='march'>March</option>
-    <option value='april'>April</option>
-    <option value='may'>May</option>
-    <option value='june'>June</option>
-    <option value='july'>July</option>
-    <option value='august'>August</option>
-    <option value='september'>September</option>
-    <option value='october'>October</option>
-    <option value='november'>November</option>
-    <option value='december'>December</option>
-    </select> 
-
-          <select id='yearInput'>
-    <option value=''>--Select Year--</option>
-    <option value='2006'>2006</option>
-    <option value='2007'>2007</option>
-    <option value='2008'>2008</option>
-    <option value='2009'>2009</option>
-    <option value='2010'>2010</option>
-    <option value='2011'>2011</option>
-    <option value='2012'>2012</option>
-    <option value='2013'>2013</option>
-    <option value='2014'>2014</option>
-    <option value='2015'>2015</option>
-    <option selected value='2016'>2016</option>
-    <option value='2017'>2017</option>
-    <option value='2018'>2018</option>
-    <option value='2019'>2019</option>
-    <option value='2020'>2020</option>
-    </select> 
-    <br>
-          <input type="submit" value="Add" class="button" id="submitButton"/>
+      <paper-button raised type="submit" id="submitButton"> Add</paper-button>
     
 
  <!-- Right Side Panel -->
