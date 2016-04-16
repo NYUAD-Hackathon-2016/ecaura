@@ -27,6 +27,15 @@ function get_org_feature(firebasepath, org, feature){
 	});
 }
 
+// Convert from the database time series format to the visualize time series format
+function parse_time_series(series) {
+	var series_res = new Array();
+  	for (var element in series) {
+  		series_res.push(series[element])
+  	}
+	return series_res
+}
+
 // Given an organization, returns a JSON object, with key = featurename, and value = timeseries.
 function get_org(firebasepath, org) {
 	// Instantiate orgpath
@@ -40,13 +49,14 @@ function get_org(firebasepath, org) {
 		// For each feature, grab the feature name and the series
 		for (var feature in p) {
 		  if (p.hasOwnProperty(feature)) {
-		  	var series = p[feature]["series"];
-		  	var series_res = new Array();
-		  	for (var element in series) {
-		  		series_res.push(series[element])
-		  	}
+		  	// var series = p[feature]["series"];
+		  	// var series_res = new Array();
+		  	// for (var element in series) {
+		  	// 	series_res.push(series[element])
+		  	// }
 
-		  	results[feature] = series_res
+		  	// results[feature] = series_res
+		  	results[feature] = parse_time_series(p[feature]["series"])
 		  }
 		}
 	})
@@ -68,7 +78,7 @@ function get_feature(firebasepath, feature){
 		// For each org, grab the orgname and the series
 		for (var orgname in p) {
 		  if (p.hasOwnProperty(orgname)) {
-		  	results[orgname] = p[orgname]["data"][feature]["series"]
+		  	results[orgname] = parse_time_series(p[orgname]["data"][feature]["series"])
 		    //console.log(orgname + " -> " + p[orgname]);
 		  }
 		}
