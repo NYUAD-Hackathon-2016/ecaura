@@ -45,7 +45,6 @@ function get_org(firebasepath, org) {
 		//console.log(results)
 		return results
 	})
-	return
 }
 
 // Returns a JSON Object where the key is the org, and the val is the series.

@@ -13,69 +13,29 @@
     <input type='text' id='yearInput' placeholder='Year'>
     <input type='text' id='featureInput' placeholder='Feature (ex. electricity)'>
     <input type='text' id='valueInput' placeholder='Value'>
-    <input type="submit" value="Add" class="button" id="submitDemo"/>
+    <input type="submit" value="Add" class="button" id="submitButton"/>
     <script>
-    	var firebasepath = "https://ecaura.firebaseIO.com"
+    var firebasepath = "https://ecaura.firebaseIO.com"
 
 	  var myDataRef = new Firebase(firebasepath);
-      //var usersRef = ref.child("users");
-      // set(myDataRef, "alanisawesome", "apple", 1)
-      // set(myDataRef, "gracehop", "microsoft", 2)
-  //     usersRef.child("alanisawesome").set({
-		//   feature: "apple",
-		//   series: 1
-		// });
-		// usersRef.child("gracehop").set({
-		//   feature: "microsoft",
-		//   series: 2
-		// });
-
-      $('#valueInput').keypress(function (e) {
-        if (e.keyCode == 13) {
+	  myDataRef.on('value', function(snapshot) {
+	        //get_feature(firebasepath, "electricity")
+	        console.log(get_org(firebasepath, "nyuad"))
+	      });
+      $('#submitButton').on('click', function () {
           var name = $('#nameInput').val();
           var month = $('#monthInput').val();
           var year = $('#yearInput').val();
           var feature = $('#featureInput').val();
           var val = $('#valueInput').val();
 
-          //set(firebasepath, name, text, 1)
-          var newdate = year + " " + month
-          // set_date(firebasepath, name, val, newdate, {date: newdate, value:val})
-          // //myDataRef.set({name: name, text: text});
-          // //set(myDataRef, name, "electricity", 1)
-          // $('#nameInput').val('');
-          // $('#monthInput').val('');
-          // $('#yearInput').val('');
-          // $('#featureInput').val('');
-          // $('#valueInput').val('');       
-        }
-      });
-      $('#submitDemo').on('click', function () {
-          var name = $('#nameInput').val();
-          var month = $('#monthInput').val();
-          var year = $('#yearInput').val();
-          var feature = $('#featureInput').val();
-          var val = $('#valueInput').val();
-
-          //set(firebasepath, name, text, 1)
           var newdate = year + " " + month
           set_date(firebasepath, name, feature, newdate, {date: newdate, value:val})
-          //myDataRef.set({name: name, text: text});
-          //set(myDataRef, name, "electricity", 1)
-          //$('#nameInput').val('');
-          //$('#monthInput').val('');
-          //$('#yearInput').val('');
           $('#featureInput').val('');
           $('#valueInput').val('');  
 
       });
-      myDataRef.on('value', function(snapshot) {
-        //var message = snapshot.val();
-        //console.log(message)
-        get_feature(firebasepath, "electricity")
-        get_org(firebasepath, "testing2123123")
-
-      });
+      
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
