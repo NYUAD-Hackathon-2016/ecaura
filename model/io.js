@@ -30,12 +30,14 @@ function get_org_feature(firebasepath, org, feature){
 // Given an organization, returns a JSON object, with key = featurename, and value = timeseries.
 function get_org(firebasepath, org) {
 	// Instantiate orgpath
-	var orgpath = firebasepath + "/orgs/" + org + /data/;
+	var orgpath = firebasepath + "/orgs/" + org + "/data/";
 	var orgRef = new Firebase(orgpath);
+
+	var results = new Object();
 
 	orgRef.orderByKey().on("value", function (snapshot) {
 		p = snapshot.val()
-		var results = new Object()
+		//results = new Object()
 		// For each feature, grab the feature name and the series
 		for (var feature in p) {
 		  if (p.hasOwnProperty(feature)) {
@@ -43,8 +45,9 @@ function get_org(firebasepath, org) {
 		  }
 		}
 		//console.log(results)
-		return results
+		//return results
 	})
+	return results
 }
 
 // Returns a JSON Object where the key is the org, and the val is the series.

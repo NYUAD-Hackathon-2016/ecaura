@@ -20,7 +20,8 @@
 	  var myDataRef = new Firebase(firebasepath);
 	  myDataRef.on('value', function(snapshot) {
 	        //get_feature(firebasepath, "electricity")
-	        console.log(get_org(firebasepath, "nyuad"))
+	        var x = get_org(firebasepath, "nyuad")
+	        console.log(x)
 	      });
       $('#submitButton').on('click', function () {
           var name = $('#nameInput').val();
