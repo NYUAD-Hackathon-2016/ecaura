@@ -3,9 +3,33 @@
     float: left;
     width: 35%;
     height: 100vh;
-    background-color: #B9D7D9;
+    background-color: #EFEFEF;
 }
 
+paper-tabs paper-tab.iron-selected{
+    background-color: #303F9F;
+    color: white;
+}
+
+paper-tabs{
+    background-color: #69F0AE;
+    color:#1A237E;
+}
+
+paper-input {
+
+padding-left: 15px;
+width:50%;
+
+
+}
+
+
+
+paper-button{
+     background-color: #E8EAF6;
+
+}
 #OutputBox {
     position: relative;
     float: right;
@@ -38,6 +62,15 @@ li {
 }
 
 
+#logo img{
+
+margin: 6px;
+
+
+}
+#logo{
+    background-color: #DDD;
+}
 
 
 /*This is to style the headings within each tab, e.g. Water, Fuel, etc.*/

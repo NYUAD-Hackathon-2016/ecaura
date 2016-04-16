@@ -20,6 +20,9 @@ path {
     <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link href="https://polygit.org/components/polymer/polymer.html" rel="import">
 <link rel="import" href="https://polygit.org/components/paper-tabs/paper-tabs.html">
+<link rel="import" href="https://polygit.org/components/paper-input/paper-input.html">
+<link rel="import" href="https://polygit.org/components/paper-button/paper-button.html">
+
     <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
     <link rel='stylesheet' type='text/css' href='index.css'>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -33,82 +36,88 @@ path {
     <title>Ecaura</title> 
   </head>
   <body>
+
+
+
     <!-- Left Side Form -->
     <div id="ParameterBox">
         <!-- Tab Titles (Parameters) -->
-        <ul class="nav nav-tabs">
+        
+
+          	<div id="logo">
+
+          	<img src="ecauragreen.png" alt="logo" height="20px" >
+          	</div>
 
         <paper-tabs >
-  		<li class="active"><paper-tab data-toggle="tab" href="#menu1">Water</paper-tab></li>
-         <li><paper-tab data-toggle="tab" href="#menu2">Electricity</paper-tab></li>
-          <li><paper-tab data-toggle="tab" href="#menu3">Waste</paper-tab></li>
-          <li><paper-tab data-toggle="tab" href="#menu4">Fuel</paper-tab></li>
-          <li><paper-tab data-toggle="tab" href="#menu5">Food</paper-tab></li>
-        </ul>
+  		<paper-tab data-toggle="tab" href="#menu1">Water</paper-tab>
+         <paper-tab data-toggle="tab" href="#menu2">Electricity</paper-tab>
+          <paper-tab data-toggle="tab" href="#menu3">Waste</paper-tab>
+          <paper-tab data-toggle="tab" href="#menu4">Fuel</paper-tab>
+          <paper-tab data-toggle="tab" href="#menu5">Food</paper-tab></paper-tabs>
         <!-- Content for each tab -->
         <div class="tab-content"> 
 
 
           	<div id="menu1" class="tab-pane fade in active">
-          		<p class="ParameterHeading">Water</p>
+
+
+
+          		
             	<p class="ParameterDescription"> 
             <!-- SubContent for each tab -->
-
-          			<input type='text' id='WaterReservoir' placeholder='Reservoir'><br>
-          			<input type='text' id='GroundWater' placeholder='Ground Water'><br>
-          			<input type='text' id='DesalinatedWater' placeholder='Desalinated Water'><br>
-          			<input type='text' id='RecycledWater' placeholder='RecycledWater'><br>
-          		
+           
+          			<paper-input id='WaterReservoir' label='Water Reservoir'></paper-input><br>
+          			<paper-input id='GroundWater' label='Ground Water'></paper-input><br>
+          			<paper-input id='DesalinatedWater' label='Desalinated Water'></paper-input><br>
+          			<paper-input id='RecycledWater' label='RecycledWater'></paper-input><br>          		
             	</p>
          	</div>
           
 
           	<div id="menu2" class="tab-pane fade">
-            	<p class="ParameterHeading">Electricity</p>
-            	<p class="ParameterDescription"><input type='text' id='Nuclear' placeholder='Nuclear'><br>
+            	<p class="ParameterDescription">
+            	<paper-input   id='Nuclear' label='Nuclear'></paper-input><br>
             <!-- SubContent for each tab -->
-          			<input type='text' id='Solar' placeholder='Solar'><br>
-          			<input type='text' id='Wind' placeholder='Wind'><br>
-          			<input type='text' id='HydroElectric' placeholder='HydroElectric'><br>
-          			<input type='text' id='FossilFuels' placeholder='Fossil Fuels'>
+          			<paper-input   id='Solar' label='Solar'></paper-input><br>
+          			<paper-input  id='Wind' label='Wind'></paper-input><br>
+          			<paper-input   id='HydroElectric' label='HydroElectric'></paper-input><br>
+          			<paper-input  id='FossilFuels' label='Fossil Fuels'></paper-input>
           		</p>
           	</div>
           
 
 
           	<div id="menu3" class="tab-pane fade">
-            	<p class="ParameterHeading">Waste</p>
             	<p class="ParameterDescription"> 
     	    <!-- SubContent for each tab -->
 
-            		<input type='text' id='Plastic' placeholder='Plastic'><br>
-          			<input type='text' id='Paper' placeholder='Paper'><br>
-          			<input type='text' id='Glass' placeholder='Glass'><br>
-          			<input type='text' id='Metal' placeholder='Metal'><br>
-          			<input type='text' id='Landfill' placeholder='Landfill'></p>
+            		<paper-input  id='Plastic' label='Plastic'></paper-input><br>
+          			<paper-input  id='Paper' label='Paper'></paper-input><br>
+          			<paper-input  id='Glass' label='Glass'></paper-input><br>
+          			<paper-input  id='Metal' label='Metal'></paper-input><br>
+          			<paper-input  id='Landfill' label='Landfill'></paper-input></p>
           	</div>
           
 
           	<div id="menu4" class="tab-pane fade">
-            	<p class="ParameterHeading">Fuel</p>
             	<p class="ParameterDescription">
             <!-- SubContent for each tab -->
-					<input type='text' id='NaturalGas' placeholder='Natural Gas'><br>
-          			<input type='text' id='FuelOil' placeholder='Fuel Oil'><br>
-          			<input type='text' id='LPG' placeholder='LPG'></p>
+					<paper-input  id='NaturalGas' label='Natural Gas'></paper-input><br>
+          			<paper-input id='FuelOil' label='Fuel Oil'></paper-input><br>
+          			<paper-input id='LPG' label='LPG'></paper-input></p>
           	</div>
           
 
           	<div id="menu5" class="tab-pane fade">
-            	<p class="ParameterHeading">Food</p>
             	<p class="ParameterDescription">
             <!-- SubContent for each tab -->
-					<input type='text' id='Beef' placeholder='Amount of Beef '><br>
-          			<input type='text' id='Chicken' placeholder='Chicken'><br>
-          			<input type='text' id='Dairy' placeholder='Dairy'><br>
-          			<input type='text' id='Veggies' placeholder='Veggies'><br>
-          			<input type='text' id='Fruits' placeholder='Fruits'><br>
-          			<input type='text' id='Grains' placeholder='Grains'></p>
+					<paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
+          			<paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
+          			<paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
+          			<paper-input   id='Veggies' placeholder='Veggies'></paper-input><br>
+          			<paper-input   id='Fruits' placeholder='Fruits'></paper-input><br>
+          			<paper-input   id='Grains' placeholder='Grains'></paper-input></p>
           	</div>
     	</div> 
     
@@ -148,7 +157,7 @@ path {
     <option value='2020'>2020</option>
     </select> 
     <br>
-          <input type="submit" value="Add" class="button" id="submitButton"/>
+          <paper-button raised type="submit" id="submitButton"> Add</paper-button>
     
 
  <!-- Right Side Panel -->
