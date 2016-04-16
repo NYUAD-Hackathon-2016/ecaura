@@ -1,4 +1,4 @@
-function add_series_to_svg(data, parseDate, width, height) {
+function add_series_to_svg(data, parseDate, width, height, divid) {
 	// Set the dimensions of the canvas / graph
 	// Set the ranges
 	var x = d3.time.scale().range([0, width]);
@@ -16,7 +16,7 @@ function add_series_to_svg(data, parseDate, width, height) {
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.value); });
 
-    var svg = d3.select("#graph")
+    var svg = d3.select(divid)
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
