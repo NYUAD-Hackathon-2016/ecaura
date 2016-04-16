@@ -7,6 +7,14 @@ function set(firebasepath, org, feature, series) {
 	featureRef.set({name: feature, series: series});
 }
 
+// Adds a single data to the database.
+// set_date(firebasepath, "AppleInc", "electricity", "2015 June", {date: "2015 June", value:500})
+function set_date(firebasepath, org, feature, date, dateobject) {
+	var path = firebasepath + "/orgs/" + org + "/data/" + feature + /series/ + date;
+	var dateRef = new Firebase(path);
+	dateRef.set(dateobject);
+}
+
 // Get the Time series for the organization "org", for the feature "feature"
 // Ex: get_org_feature(firebasepath, "AppleInc", "electricity")
 function get_org_feature(firebasepath, org, feature){

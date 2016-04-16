@@ -30,7 +30,8 @@
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-         set(firebasepath, name, text, 1)
+          //set(firebasepath, name, text, 1)
+          set_date(firebasepath, name, text, "2015 June", {date: "2015 June", value:500})
           //myDataRef.set({name: name, text: text});
           //set(myDataRef, name, "electricity", 1)
           $('#messageInput').val('');
