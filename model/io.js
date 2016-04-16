@@ -10,7 +10,7 @@ function set(firebasepath, org, feature, series) {
 // Adds a single data to the database.
 // set_date(firebasepath, "AppleInc", "electricity", "2015 June", {date: "2015 June", value:500})
 function set_date(firebasepath, org, feature, date, dateobject) {
-	var path = firebasepath + "/orgs/" + org + "/data/" + feature + /series/ + date;
+	var path = firebasepath + "/orgs/" + org + "/data/" + feature + "/series/" + date;
 	var dateRef = new Firebase(path);
 	dateRef.set(dateobject);
 }
