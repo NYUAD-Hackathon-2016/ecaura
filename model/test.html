@@ -11,6 +11,7 @@
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='monthInput' placeholder='Month'>
     <input type='text' id='yearInput' placeholder='Year'>
+    <input type='text' id='featureInput' placeholder='Feature (ex. electricity)'>
     <input type='text' id='valueInput' placeholder='Value'>
     <input type="submit" value="Add" class="button" id="submitDemo"/>
     <script>
@@ -34,26 +35,38 @@
           var name = $('#nameInput').val();
           var month = $('#monthInput').val();
           var year = $('#yearInput').val();
+          var feature = $('#featureInput').val();
           var val = $('#valueInput').val();
 
           //set(firebasepath, name, text, 1)
           var newdate = year + " " + month
-          set_date(firebasepath, name, text, newdate, {date: newdate, value:val})
-          //myDataRef.set({name: name, text: text});
-          //set(myDataRef, name, "electricity", 1)
-          $('#nameInput').val('');
-          $('#monthInput').val('');
-          $('#yearInput').val('');
-          $('#valueInput').val('');        }
+          // set_date(firebasepath, name, val, newdate, {date: newdate, value:val})
+          // //myDataRef.set({name: name, text: text});
+          // //set(myDataRef, name, "electricity", 1)
+          // $('#nameInput').val('');
+          // $('#monthInput').val('');
+          // $('#yearInput').val('');
+          // $('#featureInput').val('');
+          // $('#valueInput').val('');       
+        }
       });
       $('#submitDemo').on('click', function () {
-	      var name = $('#nameInput').val();
-	      var text = $('#valueInput').val();
-	      //set(firebasepath, name, text, 1)
-	      set_date(firebasepath, name, text, "2015 June", {date: "2015 June", value:500})
-	      //myDataRef.set({name: name, text: text});
-	      //set(myDataRef, name, "electricity", 1)
-	      $('#valueInput').val('');
+          var name = $('#nameInput').val();
+          var month = $('#monthInput').val();
+          var year = $('#yearInput').val();
+          var feature = $('#featureInput').val();
+          var val = $('#valueInput').val();
+
+          //set(firebasepath, name, text, 1)
+          var newdate = year + " " + month
+          set_date(firebasepath, name, feature, newdate, {date: newdate, value:val})
+          //myDataRef.set({name: name, text: text});
+          //set(myDataRef, name, "electricity", 1)
+          //$('#nameInput').val('');
+          //$('#monthInput').val('');
+          //$('#yearInput').val('');
+          $('#featureInput').val('');
+          $('#valueInput').val('');  
 
       });
       myDataRef.on('value', function(snapshot) {
