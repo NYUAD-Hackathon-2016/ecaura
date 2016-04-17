@@ -18,6 +18,9 @@ path {
     <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link href="https://polygit.org/components/polymer/polymer.html" rel="import">
 <link rel="import" href="https://polygit.org/components/paper-tabs/paper-tabs.html">
+<link rel="import" href="https://polygit.org/components/paper-input/paper-input.html">
+<link rel="import" href="https://polygit.org/components/paper-button/paper-button.html">
+
     <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
     <link rel='stylesheet' type='text/css' href='index.css'>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -31,11 +34,8 @@ path {
     <title>Ecaura</title> 
   </head>
   <body>
-    <!-- Left Side Form -->
-    <div id="ParameterBox">
-        <!-- Tab Titles (Parameters) -->
-        <!-- Logo and Date -->
-        <div id="logo">
+
+<div id="logo">
 
           <img src="ecauragreen.png" alt="logo" height="25px" >
 
@@ -76,6 +76,14 @@ path {
         <br>
         </div>
 
+    <!-- Left Side Form -->
+    <div id="ParameterBox">
+        <!-- Tab Titles (Parameters) -->
+        
+        <!-- Logo and Date -->
+        
+
+
       <paper-tabs id="papertabs" selected="0">
       <paper-tab data-toggle="tab" href="#water" data-id:"water">Water</paper-tab>
          <paper-tab data-toggle="tab" href="#electricity">Electricity</paper-tab>
@@ -85,11 +93,15 @@ path {
         <!-- Content for each tab -->
         <div class="tab-content"> 
 
+
             <div id="water" class="tab-pane fade in active">
 
+
+
+              
               <p class="ParameterDescription"> 
             <!-- SubContent for each tab -->
-
+           
                 <paper-input id='WaterReservoir' label='Water Reservoir (litres/month)'></paper-input><br>
                 <paper-input id='GroundWater' label='Ground Water (litres/month)'></paper-input><br>
                 <paper-input id='DesalinatedWater' label='Desalinated Water (litres/month)'></paper-input><br>
@@ -110,10 +122,10 @@ path {
             </div>
           
 
+
             <div id="waste" class="tab-pane fade">
               <p class="ParameterDescription"> 
           <!-- SubContent for each tab -->
-
 
                 <paper-input  id='Plastic' label='Plastic (kg/month)'></paper-input><br>
                 <paper-input  id='Paper' label='Paper (kg/month)'></paper-input><br>
@@ -121,29 +133,33 @@ path {
                 <paper-input  id='Metal' label='Metal (kg/month)'></paper-input><br>
                 <paper-input  id='Landfill' label='Landfill (kg/month)'></paper-input></p>
             </div>
+          
 
             <div id="fuel" class="tab-pane fade">
               <p class="ParameterDescription">
             <!-- SubContent for each tab -->
-
           <paper-input  id='NaturalGas' label='Natural Gas (litres/month)'></paper-input><br>
                 <paper-input id='FuelOil' label='Fuel Oil (litres/month)'></paper-input><br>
                 <paper-input id='LPG' label='LPG (litres/month)'></paper-input></p>
             </div>
           
+
             <div id="food" class="tab-pane fade">
               <p class="ParameterDescription">
             <!-- SubContent for each tab -->
-          <input type='text' id='Beef' placeholder='Amount of Beef '><br>
-                <input type='text' id='Chicken' placeholder='Chicken'><br>
-                <input type='text' id='Dairy' placeholder='Dairy'><br>
-                <input type='text' id='Veggies' placeholder='Veggies'><br>
-                <input type='text' id='Fruits' placeholder='Fruits'><br>
-                <input type='text' id='Grains' placeholder='Grains'></p>
+          <paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
+                <paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
+                <paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
+                <paper-input   id='Veggies' placeholder='Veggies'></paper-input><br>
+                <paper-input   id='Fruits' placeholder='Fruits'></paper-input><br>
+                <paper-input   id='Grains' placeholder='Grains'></paper-input></p>
             </div>
                       <paper-button raised type="submit" id="submitButton"> Add</paper-button>
 
       </div> 
+    
+
+
     
 
  <!-- Right Side Panel -->
@@ -181,9 +197,8 @@ path {
           }  
     }
 
-    myDataRef.on('value', function(snapshot) {
-
-        current_graph = $(".iron-selected").attr("href")
+    function update_graphs() {
+      current_graph = $(".iron-selected").attr("href")
         current_graph = current_graph.substring(1, current_graph.length);
         console.log(current_graph)
         //console.log($(".iron-selected").value);
@@ -206,6 +221,33 @@ path {
         var averages = get_score(firebasepath, "nyuad")
         d3.selectAll("#OverallVisualization > *").remove();
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
+    }
+
+    myDataRef.on('value', function(snapshot) {
+        update_graphs()
+        // current_graph = $(".iron-selected").attr("href")
+        // current_graph = current_graph.substring(1, current_graph.length);
+        // console.log(current_graph)
+        // //console.log($(".iron-selected").value);
+        // console.log("Change found.")
+        //   //get_feature(firebasepath, "electricity")
+        // console.log(d3.select("svg"))
+        // //d3.select('svg').remove();
+        // //d3.select('svg').remove();
+        // console.log(d3.select("svg"))
+
+        // var x1 = get_org(firebasepath, "nyuad")
+        //   console.log(x1)
+        //   data = x1[current_graph]
+
+        // console.log(data)
+        // if (data) {
+        //   d3.selectAll("#InputVisualization > *").remove();
+        //   add_series_to_svg(data, parseDate, "#InputVisualization");
+        // }
+        // var averages = get_score(firebasepath, "nyuad")
+        // d3.selectAll("#OverallVisualization > *").remove();
+        // add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
         
         });
       $('#submitButton').on('click', function () {
@@ -334,74 +376,15 @@ path {
         console.log("Tab was clicked!");
 
           for (i in fields) {
-            console.log($("#" + fields[i]))
+            //console.log($("#" + fields[i]))
             $("#" + fields[i]).val('');
           }   
+          update_graphs()
 
 
  
       });
-      $('paper-tab[href="#water"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["water"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
-      });
-
-      $('paper-tab[href="#electricity"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["electricity"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }      
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
-        });
-      $('paper-tab[href="#waste"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["oil"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }  
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")   
-        });
-      $('paper-tab[href="#fuel"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["fuel"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          } 
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
-      });
-      $('paper-tab[href="#food"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["food"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }   
-          var averages = get_score(firebasepath, "nyuad")
-          add_many_series_to_svg(averages, parseDate, "#OverallVisualization")   
-        });
+      
 
 
       function displayChatMessage(name, text) {
