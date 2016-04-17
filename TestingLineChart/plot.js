@@ -67,8 +67,17 @@ function add_series_to_svg(data, parseDate, divid) {
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
+        .text("value")
         .call(xAxis);
-
+    //add the Y label
+    /*svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - (50))
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Value");
+    */
     // Add the Y Axis
     svg.append("g")
         .attr("class", "y axis")
