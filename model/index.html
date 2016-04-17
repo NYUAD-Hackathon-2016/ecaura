@@ -147,9 +147,6 @@ path {
             <div id="food" class="tab-pane fade">
               <p class="ParameterDescription">
             <!-- SubContent for each tab -->
-            
-          
-  
           <paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
                 <paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
                 <paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
@@ -157,8 +154,7 @@ path {
                 <paper-input   id='Fruits' placeholder='Fruits'></paper-input><br>
                 <paper-input   id='Grains' placeholder='Grains'></paper-input></p>
             </div>
-                      <paper-button raised type="submit" id="submitButton"> Add</paper-button> <br> <br> <br>
-                      <paper-button raised id="clickMe" type="button" value="score" onclick=alert("get_score(firebasepath,nyuad);");> Get Score!</paper-button>
+                      <paper-button raised type="submit" id="submitButton"> Add</paper-button>
 
       </div> 
     
@@ -166,18 +162,16 @@ path {
 
     
 
-
  <!-- Right Side Panel -->
 
   </div>
       <div id="OutputBox">
-          <div id="title">
+          <div id="top-title">
               <h3>Heading</h3>
           </div>
           <div id="InputVisualization"></div>
-          <div><hr></div>
-          <div id="title">
-            <h3>Heading</h3>
+          <div id="bottom-title">
+            <h3>E Score</h3>
           </div>
           <div id="OverallVisualization"></div>
       </div>

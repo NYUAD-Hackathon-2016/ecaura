@@ -45,13 +45,13 @@ paper-button{
     margin: auto;
     top:100px;
 }
-#title{
+#top-title, #bottom-title{
     z-index: 1000;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-#title h3{
+#top-title, #bottom-title h3{
     text-align: center;
 }
 
