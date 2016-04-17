@@ -7,6 +7,8 @@
     display:block;
     background-color: #EFEFEF;
 }
+
+
 paper-tabs paper-tab.iron-selected{
     background-color: #1B5E20;
     color: white;
@@ -40,21 +42,35 @@ background-color:#388E3C;
     width: 65%;
     height: 100vh;
     background-colotir: white;
-}#InputVisualization {
+}#upperwrapper {
+    
+    width: 100%;
+    overflow: hidden;
+    height: 50%;
+    
+}
+
+#InputVisualization{
     position: relative;
     float: left;
-    width: 100%;
+    width: 45%;
 
-    height: 40vh;
+    height: 100%;
     border-bottom: 2px dashed #ccc;
     background-color: white;
-    overflow-y: scroll;
     overflow-x: hidden;
 }
+
+#overview
+{
+    width: 45%;
+    height: 100%;
+    float:left;
+}
 #InputVisualization svg{
-    width: 600px;
+    width: 400px;
     display:block;
-    margin: auto;
+    margin-left:10px;
     top:100px;
 }
 #top-title, #bottom-title{

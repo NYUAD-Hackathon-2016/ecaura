@@ -8,7 +8,7 @@ function add_series_to_svg(data, parseDate, divid) {
     // var  width = 600 - margin.left - margin.right;
     // var  height = 270 - margin.top - margin.bottom;
 
-    var width = 530
+    var width = 330
     var height = 200
 
 
@@ -98,7 +98,7 @@ function add_many_series_to_svg(data_arr, parseDate, divid) {
     // var  width = 600 - margin.left - margin.right;
     // var  height = 270 - margin.top - margin.bottom;
 
-    var width = 530
+    var width = 330
     var height = 200
 
     var x = d3.time.scale().range([0, width]);

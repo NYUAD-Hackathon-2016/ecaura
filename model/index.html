@@ -30,6 +30,7 @@ path {
 
         <script src='io.js'></script>
     <script src='../TestingLineChart/plot.js'></script>
+    <script type="text/javascript" src='../OverViewCharts/overview.js'></script>
 
     <title>Ecaura</title> 
   </head>
@@ -170,23 +171,29 @@ path {
  <!-- Right Side Panel -->
 
       <div id="OutputBox">
-          <div id="top-title"><h3>Water</h3>
+         <div id="upperwrapper"> 
+            <div id="top-title"><h3>Water</h3></div>
+            <div id="InputVisualization"></div>
+            <div id="overview"></div>
           </div>
-          <div id="InputVisualization"></div>
+
+          <div id='bottomwrapper'>
+
           <div id="bottom-title">
             <h3>E Score</h3>
+          </div>
 
-            <div id="legenddiv">
+          <div id="legenddiv">
         	<ul>
             <li><span class="Water" style="background-color: black;"></span> Water</li>
             <li><span class="Waste" style="background-color: orange;"></span>Waste</li>
             <li><span class="Fuel" style="background-color: green;"></span> Fuel</li>
             <li><span class="Electricity" style="background-color: blue;"></span>Electricity</li>
             <li><span class="Food" style="background-color: red;"></span> Food</li>
-            </ul>
-            </div>
+          </ul>
           </div>
           <div id="OverallVisualization"></div>
+          </div>
       </div>
   
     
@@ -250,6 +257,14 @@ path {
         var averages = get_score(firebasepath, "nyuad")
         d3.selectAll("#OverallVisualization > *").remove();
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
+
+        // render overview graph
+        var feature = get_current_tab()
+        var average_data = get_average_series(firebasepath, feature);
+        var org_feature = get_org_feature(firebasepath, 'nyuad', feature );
+        d3.selectAll("#overview > *").remove();
+        append_2col_svg(org_feature, average_data, '#overview', 'nyuad', feature);
+
     }
 
     myDataRef.on('value', function(snapshot) {
