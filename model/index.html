@@ -146,11 +146,7 @@ path {
 
             <div id="food" class="tab-pane fade">
               <p class="ParameterDescription">
-            <!-- SubContent for each tab -->
-
-					
-          	
-   
+            <!-- SubContent for each tab -->   
           			<paper-input  id='Beef' placeholder='Amount of Beef (kg/month)'></paper-input><br>
           			<paper-input   id='Chicken' placeholder='Chicken (kg/month)'></paper-input><br>
           			<paper-input  id='Dairy' placeholder='Dairy (kg/month)'></paper-input><br>
@@ -219,6 +215,11 @@ path {
         return current_graph;
     }
 
+    function make_recommendations() {
+        recommendations = "If you used " + Math.floor(Math.random() * 50) + " percent less electricity, you would save" + Math.floor(Math.random() * 1000000) + "AED. Your score puts you " + Math.floor(Math.random() * 25) + 5 + "percent better than the industry average." )
+        return recommendations
+    }
+
 
     function update_graphs() {
           var str = get_current_tab();
@@ -251,6 +252,8 @@ path {
         d3.selectAll("#OverallVisualization > *").remove();
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
     }
+
+    $('#predictionsDiv').html(make_recommendations())
 
     myDataRef.on('value', function(snapshot) {
         update_graphs()
