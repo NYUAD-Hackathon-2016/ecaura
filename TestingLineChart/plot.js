@@ -1,5 +1,5 @@
 function add_series_to_svg(data, parseDate, divid) {
-    console.log(data)
+    //console.log(data)
 	// Set the dimensions of the canvas / graph
 	// Set the ranges
 
@@ -47,7 +47,7 @@ function add_series_to_svg(data, parseDate, divid) {
 
 	data = data.sort(sortByDateAscending);
 	
-    console.log(data)
+    //console.log(data)
 
 
 
@@ -67,8 +67,17 @@ function add_series_to_svg(data, parseDate, divid) {
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
+        .text("value")
         .call(xAxis);
-
+    //add the Y label
+    /*svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - (50))
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Value");
+    */
     // Add the Y Axis
     svg.append("g")
         .attr("class", "y axis")
@@ -78,7 +87,7 @@ function add_series_to_svg(data, parseDate, divid) {
 
 
 function add_many_series_to_svg(data_arr, parseDate, divid) {
-    console.log(data_arr)
+    //console.log(data_arr)
 
     data = data_arr["electricity"]
     // Set the dimensions of the canvas / graph
@@ -132,17 +141,17 @@ function add_many_series_to_svg(data_arr, parseDate, divid) {
             }
 
     }
-    console.log(new_data_arr)
+    //console.log(new_data_arr)
     data_arr = new_data_arr;
 
-    console.log(data_arr)
+    //console.log(data_arr)
     var flattened = new Array()
     for (i in data_arr) {
         for (elem in data_arr[i]){
             flattened.push(data_arr[i][elem])
         }
     }
-    console.log(flattened)
+    //console.log(flattened)
 
 
 
@@ -155,6 +164,7 @@ function add_many_series_to_svg(data_arr, parseDate, divid) {
     //Add the valueline path.
     counter = 0
     for (i in data_arr) {
+        //console.log(i)
         //console.log(data_arr[i])
         svg.append("path")
             //.attr("class", "line")

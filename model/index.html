@@ -147,39 +147,55 @@ path {
             <div id="food" class="tab-pane fade">
               <p class="ParameterDescription">
             <!-- SubContent for each tab -->
-          <paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
-                <paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
-                <paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
-                <paper-input   id='Veggies' placeholder='Veggies'></paper-input><br>
-                <paper-input   id='Fruits' placeholder='Fruits'></paper-input><br>
-                <paper-input   id='Grains' placeholder='Grains'></paper-input></p>
+
+					
+          	
+   
+          			<paper-input  id='Beef' placeholder='Amount of Beef (kg/month)'></paper-input><br>
+          			<paper-input   id='Chicken' placeholder='Chicken (kg/month)'></paper-input><br>
+          			<paper-input  id='Dairy' placeholder='Dairy (kg/month)'></paper-input><br>
+          			<paper-input   id='Veggies' placeholder='Veggies (kg/month)'></paper-input><br>
+          			<paper-input   id='Fruits' placeholder='Fruits (kg/month)'></paper-input><br>
+          			<paper-input   id='Grains' placeholder='Grains (kg/month)'></paper-input></p>
             </div>
-                      <paper-button raised type="submit" id="submitButton"> Add</paper-button>
+
+ 						<paper-button raised class="custom green" id="submitButton"> Add</paper-button>
+                       <paper-button raised id="clickMe" class="custom score" type="button" value="score"> Get Score</paper-button>
 
       </div> 
+</div>
     
 
-
-    
 
  <!-- Right Side Panel -->
 
-  </div>
       <div id="OutputBox">
-          <div id="InputVisualization">
-          ​
+          <div id="top-title"><h3>Water</h3>
           </div>
-        <div id="OverallVisualization">
-          <h1 class="Heading">OVERVIEW</h1>
-        </div>
-    </div>
+          <div id="InputVisualization"></div>
+          <div id="bottom-title">
+            <h3>E Score</h3>
+
+            <div id="legenddiv">
+        	<ul>
+            <li><span class="Water" style="background-color: black;"></span> Water</li>
+            <li><span class="Waste" style="background-color: orange;"></span>Waste</li>
+            <li><span class="Fuel" style="background-color: green;"></span> Fuel</li>
+            <li><span class="Electricity" style="background-color: blue;"></span>Electricity</li>
+            <li><span class="Food" style="background-color: red;"></span> Food</li>
+            </ul>
+            </div>
+          </div>
+          <div id="OverallVisualization"></div>
+      </div>
+  
     
     
     <script>
     var firebasepath = "https://ecaura.firebaseIO.com"
-    console.log("Starting request")
+    //console.log("Starting request")
     var myDataRef = new Firebase(firebasepath);
-    console.log("Connected")
+    //console.log("Connected")
     // Set the dimensions of the canvas / graph
 
 
@@ -188,32 +204,45 @@ path {
           var fields = ["WaterReservoir", "GroundWater", "DesalinatedWater", "RecycledWater", "Nuclear", "Solar", "Wind", "HydroElectric", 
           "FossilFuels", "Plastic", "Paper", "Glass", "Metal", "Landfill", "NaturalGas", "FuelOil", "LPG", "Beef", "Chicken", "Dairy", "Veggies", "Fruits", "Grains"]
 
-    console.log("About to create listener")
+    //console.log("About to create listener")
 
     function clear_fields(fields) {
        for (i in fields) {
-            console.log($("#" + fields[i]))
+            //console.log($("#" + fields[i]))
             $("#" + fields[i]).val('');
           }  
     }
 
+    function get_current_tab() {
+        current_graph = $(".iron-selected").attr("href");
+        current_graph = current_graph.substring(1, current_graph.length);
+        return current_graph;
+    }
+
+
     function update_graphs() {
+          var str = get_current_tab();
+          str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                return letter.toUpperCase();
+          });
+         $("#top-title h3").html(str);
+
       current_graph = $(".iron-selected").attr("href")
         current_graph = current_graph.substring(1, current_graph.length);
-        console.log(current_graph)
-        //console.log($(".iron-selected").value);
-        console.log("Change found.")
+        //console.log(current_graph)
+        ////console.log($(".iron-selected").value);
+        //console.log("Change found.")
           //get_feature(firebasepath, "electricity")
-        console.log(d3.select("svg"))
+        //console.log(d3.select("svg"))
         //d3.select('svg').remove();
         //d3.select('svg').remove();
-        console.log(d3.select("svg"))
+        //console.log(d3.select("svg"))
 
         var x1 = get_org(firebasepath, "nyuad")
-          console.log(x1)
+          //console.log(x1)
           data = x1[current_graph]
 
-        console.log(data)
+        //console.log(data)
         if (data) {
           d3.selectAll("#InputVisualization > *").remove();
           add_series_to_svg(data, parseDate, "#InputVisualization");
@@ -227,20 +256,20 @@ path {
         update_graphs()
         // current_graph = $(".iron-selected").attr("href")
         // current_graph = current_graph.substring(1, current_graph.length);
-        // console.log(current_graph)
-        // //console.log($(".iron-selected").value);
-        // console.log("Change found.")
+        // //console.log(current_graph)
+        // ////console.log($(".iron-selected").value);
+        // //console.log("Change found.")
         //   //get_feature(firebasepath, "electricity")
-        // console.log(d3.select("svg"))
+        // //console.log(d3.select("svg"))
         // //d3.select('svg').remove();
         // //d3.select('svg').remove();
-        // console.log(d3.select("svg"))
+        // //console.log(d3.select("svg"))
 
         // var x1 = get_org(firebasepath, "nyuad")
-        //   console.log(x1)
+        //   //console.log(x1)
         //   data = x1[current_graph]
 
-        // console.log(data)
+        // //console.log(data)
         // if (data) {
         //   d3.selectAll("#InputVisualization > *").remove();
         //   add_series_to_svg(data, parseDate, "#InputVisualization");
@@ -271,6 +300,7 @@ path {
           food_total = 0
           var newdate = year + " " + month;
 
+          //console.log("Starting the pushes")
           for (i in water_ones) {
             feature = water_ones[i]
             var val = $("#" + feature).val();
@@ -283,7 +313,7 @@ path {
           }
           if (water_total > 0) {
 
-            console.log("Added some waters")
+            //console.log("Added some waters")
             d3.select("svg").remove();
             set_date(firebasepath, name, "water", newdate, {date: newdate, value:water_total} )
             clear_fields(water_ones)
@@ -294,7 +324,7 @@ path {
 
           for (i in electricity_ones) {
             feature = electricity_ones[i]
-            console.log("#" + feature)
+            ////console.log("#" + feature)
             var val = $("#" + feature).val();
             if (val > 0) { 
               d3.select("svg").remove();
@@ -304,7 +334,7 @@ path {
             $("#" + feature).val('');
           }
           if (electricity_total > 0) {
-            console.log("Added some electricity")
+            //console.log("Added some electricity")
             d3.select("svg").remove();
             set_date(firebasepath, name, "electricity", newdate, {date: newdate, value:electricity_total} )
             clear_fields(electricity_ones)
@@ -322,7 +352,7 @@ path {
             $("#" + feature).val('');
           }
           if (waste_total > 0) {
-            console.log("Added some wastes")
+            //console.log("Added some wastes")
             d3.select("svg").remove();
             set_date(firebasepath, name, "waste", newdate, {date: newdate, value:waste_total} )
             clear_fields(waste_ones)
@@ -341,7 +371,7 @@ path {
           }
           if (fuel_total > 0) {
             d3.select("svg").remove();
-           console.log("Added some fuels")
+           //console.log("Added some fuels")
 
             set_date(firebasepath, name, "fuel", newdate, {date: newdate, value:fuel_total} )
             clear_fields(fuel_ones)
@@ -360,10 +390,11 @@ path {
           }
           if (food_total > 0) {
             d3.select("svg").remove();
-            console.log("Added some electricity")
+            //console.log("Added some electricity")
             set_date(firebasepath, name, "food", newdate, {date: newdate, value:food_total} )
             clear_fields(food_ones)
           }
+          //console.log("Done with the pushes")
 
         d3.selectAll("#OverallVisualization > *").remove();
         var averages = get_score(firebasepath, name)
@@ -373,19 +404,14 @@ path {
 
       });
       $('#papertabs').on('click', function() {
-        console.log("Tab was clicked!");
+        //console.log("Tab was clicked!");
 
           for (i in fields) {
-            //console.log($("#" + fields[i]))
+            ////console.log($("#" + fields[i]))
             $("#" + fields[i]).val('');
           }   
           update_graphs()
-
-
- 
       });
-      
-
 
       function displayChatMessage(name, text) {
 
