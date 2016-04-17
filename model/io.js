@@ -13,10 +13,10 @@ function add_to_date(firebasepath, date, val, feature) {
 	dateRef.transaction(function(currentDateInfo) {
    // If /users/fred/rank has never been set, currentRank will be null.
    if (currentDateInfo == null) {
-   		return {total: parseInt(val) , count: 1}
+   		return {total: parseInt(val) , count: 1, feature: feature}
    }
 
-  		return {total: currentDateInfo.total + parseInt(val) , count: currentDateInfo.count + 1}
+  		return {total: currentDateInfo.total + parseInt(val) , count: currentDateInfo.count + 1, feature:feature}
 	});
 }
 
@@ -26,9 +26,10 @@ function get_average_series(firebasepath, feature) {
 	var results = new Array()
 
 	// Query orgs that have the feature
-	dateRef.orderByChild(feature + "/total").on("value", function (snapshot) {
+	dateRef.orderByChild(feature + "/feature").equalTo(feature).on("value", function (snapshot) {
 		//console.log(snapshot.val())
 		p = snapshot.val()
+		//console.log(p)
 		// For each org, grab the orgname and the series
 		for (var date in p) {
 		  if (p.hasOwnProperty(date)) {
@@ -39,12 +40,15 @@ function get_average_series(firebasepath, feature) {
 		//console.log(results)
 		//return results
 	});
+	//console.log(results)
 	return results
 }
 
 // Adds a single data to the database.
 // set_date(firebasepath, "AppleInc", "electricity", "2015 June", {date: "2015 June", value:500})
 function set_date(firebasepath, org, feature, date, dateobject) {
+	add_to_date(firebasepath, dateobject.date, dateobject.value, feature)
+
 	var path = firebasepath + "/orgs/" + org + "/data/" + feature + "/series/" + date;
 	var dateRef = new Firebase(path);
 	dateRef.set(dateobject);
@@ -69,6 +73,18 @@ function get_org_feature(firebasepath, org, feature){
 	}, function (errorObject) {
   		console.log("The read failed: " + errorObject.code);
 	});
+}
+
+function getvalue(date, arr) {
+	//console.log(arr)
+	//console.log(date)
+	for (elem in arr) {
+		if (arr[elem]["date"] === date) {
+
+			return arr[elem]["average"]
+		}
+	}
+	return
 }
 
 
@@ -115,3 +131,22 @@ function get_feature(firebasepath, feature){
 	});
 		return results
 }
+
+function get_score(firebasepath, org) {
+	var obj = get_org(firebasepath, org)
+	//console.log(obj)
+	res = new Object()
+	for (feature in obj) {
+		//console.log(feature)
+		results = new Array()
+		var averages = get_average_series(firebasepath, feature)
+		for (var i in obj[feature]) {
+			var val = obj[feature][i]["value"]
+			var avg = getvalue(obj[feature][i]['date'], averages)
+			results.push({date: obj[feature][i]['date'], value: (val - avg)/avg})
+		}
+		res[feature] = results
+	}
+	return res
+}
+
