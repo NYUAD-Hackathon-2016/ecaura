@@ -8,21 +8,24 @@
     background-color: #EFEFEF;
 }
 paper-tabs paper-tab.iron-selected{
-    background-color: #303F9F;
+    background-color: #1B5E20;
     color: white;
 }
 paper-tabs{
    
-    color:#1A237E;
-    background-color: #C5CAE9;
+    color:white;
+    background-color: #388E3C;
 }
 paper-input {
 padding-left: 15px;
 width:65%;
 }
-paper-button{
-     background-color: #E8EAF6;
-}
+    paper-button.green {
+background-color:#388E3C;
+    color: white;   
+
+
+     }
 #OutputBox {
     position: relative;
     float: right;
@@ -33,7 +36,7 @@ paper-button{
     position: relative;
     float: right;
     width: 100%;
-    height: 50vh;
+    height: 50%;
     border-bottom: 1px solid black;
     background-color: white;
     overflow-y: scroll;
@@ -42,7 +45,7 @@ paper-button{
     position: relative;
     float: right;
     width: 100%;
-    height: 50vh;
+    height: 40%;
     background-color: white;
 }
 li {
@@ -61,6 +64,15 @@ padding-bottom: 3px;
     width: 100%;
             background-image: url(bk.png);
 }
+
+
+#legenddiv { list-style: none
+            height:10%;
+            width: 100%;
+            }
+#legenddiv li { float: left; margin-right: 10px; }
+#legenddiv span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+
 /*This is to style the headings within each tab, e.g. Water, Fuel, etc.*/
 .ParameterHeading {}
 Add Comment
