@@ -143,10 +143,12 @@ function get_score(firebasepath, org) {
 		for (var i in obj[feature]) {
 			var val = obj[feature][i]["value"]
 			var avg = getvalue(obj[feature][i]['date'], averages)
+			//console.log(avg)
 			results.push({date: obj[feature][i]['date'], value: (val - avg)/avg})
 		}
 		res[feature] = results
 	}
+	console.log(res)
 	return res
 }
 

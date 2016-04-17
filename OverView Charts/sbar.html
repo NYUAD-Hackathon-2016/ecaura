@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+			<style>
+
+		.marker { stroke: #000; stroke-width: 2px; }	
+		.axis text {
+		  font: 10px;
+		}
+
+		.axis line,
+		.axis path {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+		.axis--x path {
+		  display: none;
+		}
+		.legend {
+	            padding: 5px;
+	            font: 10px;
+	            background: yellow;
+	            box-shadow: 2px 2px 1px #888;
+            }
+			rect:hover  {
+				opacity: 0.8;
+				}
+			.tooltip{
+				text-anchor: middle;
+				font-size: 12px;
+				font-weight: bold;
+				fill:green;	
+			}
+
+
+			.node.active {
+			  fill: blue;
+			}
+
+		</style>
+    <!-- Custom CSS 
+	<link href="css/style.css" rel="stylesheet">-->
+
+	<!-- d3 javascript -->
+	<script src="//d3js.org/d3.v3.min.js"></script>
+	
+</head>
+
+<body>
+
+
+<script>
+
+var sentiment = ["waste", "electricity", "water", "fuel"];
+var color = d3.scale.ordinal()
+    .range(["#1F78B4", "#AEC6E8", "#FE7F0E", "#FFBB7A"]); 
+var parseDate = d3.time.format("%Y %b").parse;
+
+var margin = {top: 50, right: 50, bottom: 145, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+	//.domain(data.map(function(d) { return d.date;} ))
+   .rangeRoundBands([0, width], .1);
+  
+var y = d3.scale.linear()
+    .rangeRound([height, 0]);
+
+var z = d3.scale.category20();
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .tickFormat(d3.time.format, 1);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+	
+
+d3.json("sbar.json", function(error, data) {
+  if (error) throw error;
+
+	
+  var layers = d3.layout.stack()(sentiment.map(function(c) {
+	c.marker = +c.marker;
+    return data.map(function(d) {
+      return {x: d.date, y: d[c]};
+    });
+  }));
+  
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+  });
+  	data = data.sort(function(a, b) {
+		a = new Date(a.date);
+		b = new Date(b.date);
+		return a>b ? -1 : a<b ? 1 : 0;
+		
+	});
+  
+  x.domain(layers[0].map(function(d) { return d.x; }));
+  y.domain([0, d3.max(layers[layers.length - 1], function(d) { return d.y0 + d.y; })]).nice();
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+  
+  
+  var layer = svg.selectAll(".layer")
+      .data(layers)
+    .enter().append("g")
+      .attr("class", "layer")
+      .style("fill", function(d, i) { return z(i); });
+
+  layer.selectAll("rect")
+      .data(function(d) { return d; })
+    .enter().append("rect")
+      .attr("x", function(d) { return x(d.x); })
+      .attr("y", function(d) { return y(d.y + d.y0); })
+      .attr("height", function(d) { return y(d.y0) - y(d.y + d.y0); })
+      .attr("width", x.rangeBand() - 1)
+	  		.on("mouseover", function(d){
+				var xPos = parseFloat(d3.select(this).attr("x"));
+				var yPos = parseFloat(d3.select(this).attr("y"));
+				var height = parseFloat(d3.select(this).attr("height"))
+								
+				d3.select(this).attr("stroke","blue").attr("stroke-width",2.0);							
+				
+				/**svg.append("text")
+					.attr("x",xPos)
+					.attr("y",yPos)
+					.attr("class","tooltip")
+					.text(d.y); **/
+					
+				})
+		.on("mouseout",function(){
+			svg.select(".tooltip").remove();
+			d3.select(this).attr("stroke","transparent").attr("stroke-width",0);
+														
+		});
+	
+
+	  svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "25px") 
+        .style("text-decoration", "bold")  
+        .text("Company 1's Overall Usage");
+	
+	  
+  svg.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+	  .append("text")	  
+	  .attr("x", 450)
+	  .attr("y", 40)
+		.attr("dx", ".71em")
+	  .style("text-anchor", "start")
+	  .text("Month");
+
+  svg.append("g")
+      .attr("class", "axis axis--y")
+      .attr("transform", "translate(15,0)")
+	  
+      .call(yAxis)	
+	  .append("text")  
+	  .attr("transform", "rotate(-90)")		
+	  .attr("y", -45)
+	  .attr("x", -150)
+		.attr("dy", ".71em")
+	  .style("text-anchor", "end")
+	  .text("Carbon Emissions");
+	  
+	 
+	  
+
+	
+	// adding legend
+	
+ var legend = svg.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+	
+	
+});
+
+
+
+
+
+</script>
+  
+</body>
+
+</html>
