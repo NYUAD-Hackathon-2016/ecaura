@@ -70,11 +70,13 @@ function parse_time_series(series) {
 function get_org_feature(firebasepath, org, feature){
 	var path = firebasepath + "/orgs/" + org + "/data/" + feature + "/series/";
 	var featureRef = new Firebase(path)
+	return_value = new Object()
 	featureRef.on("value", function(snapshot) {
-		return parse_time_series(snapshot.val());
+		return_value = parse_time_series(snapshot.val());
 	}, function (errorObject) {
   		console.log("The read failed: " + errorObject.code);
 	});
+	return return_value;
 }
 
 function getvalue(date, arr) {
@@ -145,10 +147,12 @@ function get_score(firebasepath, org) {
 		for (var i in obj[feature]) {
 			var val = obj[feature][i]["value"]
 			var avg = getvalue(obj[feature][i]['date'], averages)
+			//console.log(avg)
 			results.push({date: obj[feature][i]['date'], value: (val - avg)/avg})
 		}
 		res[feature] = results
 	}
+	console.log(res)
 	return res
 }
 

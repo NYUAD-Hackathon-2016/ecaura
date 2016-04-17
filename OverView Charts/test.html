@@ -10,33 +10,47 @@
     <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
 
     <script type="text/javascript">
+          
+
+          var merge_json = function(average, org_feature) {
+            var merged = new Array();
+            for (var i = 0; i < average.length; i++) {
+              var current_date = average[i].date;
+              var average_value = average[i].average;
+              var org_value = undefined;
+              for (var j = 0; j < org_feature.length; j++) {
+                if (org_feature[j].date === current_date) {
+                  org_value = org_feature[j].value;
+                  break;
+                }
+              }
+
+              if (org_value != undefined)
+                merged.push({'Date': current_date, 'Average': average_value, 'Company': org_value});
+            }
+
+            return merged;
+          }
+
+
           var firebasepath = "https://ecaura.firebaseIO.com"
           console.log("Starting request")
           var myDataRef = new Firebase(firebasepath);
           console.log("Connected")
 
           myDataRef.on('value', function(snapshot) {
-            console.log('entering...');
             var average_data = get_average_series(firebasepath, 'water');
             console.log(average_data);
 
             var org_feature = get_org_feature(firebasepath, 'nyuad', 'electricity');
             console.log(org_feature);
-          });
-    
-        // var average_water = [
-        //     {'date': "2016 Apr", 'value' : 1000},
-        //     {'date': "2016 May", 'value' : 1200},
-        //     {'date': "2016 June", 'value' : 1400},
-        //     {'date': "2016 July", 'value' : 1600},
-        // ];
 
-        // var nyuad_water = [
-        //     {'date': "2016 Apr", 'value' : 800},
-        //     {'date': "2016 May", 'value' : 1400},
-        //     {'date': "2016 June", 'value' : 1400},
-        //     {'date': "2016 July", 'value' : 1600},
-        // ];
+            var merged_json = merge_json(average_data, org_feature);
+          });
+
+
+
+          
 
     </script>
 </body>
