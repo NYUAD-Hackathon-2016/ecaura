@@ -18,6 +18,9 @@ path {
     <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link href="https://polygit.org/components/polymer/polymer.html" rel="import">
 <link rel="import" href="https://polygit.org/components/paper-tabs/paper-tabs.html">
+<link rel="import" href="https://polygit.org/components/paper-input/paper-input.html">
+<link rel="import" href="https://polygit.org/components/paper-button/paper-button.html">
+
     <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
     <link rel='stylesheet' type='text/css' href='index.css'>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -73,11 +76,12 @@ path {
         <br>
         </div>
 
-
     <!-- Left Side Form -->
     <div id="ParameterBox">
         <!-- Tab Titles (Parameters) -->
+        
         <!-- Logo and Date -->
+       	
 
 
       <paper-tabs id="papertabs" selected="0">
@@ -89,11 +93,15 @@ path {
         <!-- Content for each tab -->
         <div class="tab-content"> 
 
+
           	<div id="water" class="tab-pane fade in active">
 
+
+
+          		
             	<p class="ParameterDescription"> 
             <!-- SubContent for each tab -->
-
+           
           			<paper-input id='WaterReservoir' label='Water Reservoir (litres/month)'></paper-input><br>
           			<paper-input id='GroundWater' label='Ground Water (litres/month)'></paper-input><br>
           			<paper-input id='DesalinatedWater' label='Desalinated Water (litres/month)'></paper-input><br>
@@ -114,10 +122,10 @@ path {
           	</div>
           
 
+
           	<div id="waste" class="tab-pane fade">
             	<p class="ParameterDescription"> 
     	    <!-- SubContent for each tab -->
-
 
             		<paper-input  id='Plastic' label='Plastic (kg/month)'></paper-input><br>
           			<paper-input  id='Paper' label='Paper (kg/month)'></paper-input><br>
@@ -125,29 +133,33 @@ path {
           			<paper-input  id='Metal' label='Metal (kg/month)'></paper-input><br>
           			<paper-input  id='Landfill' label='Landfill (kg/month)'></paper-input></p>
           	</div>
+          
 
           	<div id="fuel" class="tab-pane fade">
             	<p class="ParameterDescription">
             <!-- SubContent for each tab -->
-
 					<paper-input  id='NaturalGas' label='Natural Gas (litres/month)'></paper-input><br>
           			<paper-input id='FuelOil' label='Fuel Oil (litres/month)'></paper-input><br>
           			<paper-input id='LPG' label='LPG (litres/month)'></paper-input></p>
           	</div>
           
+
           	<div id="food" class="tab-pane fade">
             	<p class="ParameterDescription">
             <!-- SubContent for each tab -->
-					<input type='text' id='Beef' placeholder='Amount of Beef '><br>
-          			<input type='text' id='Chicken' placeholder='Chicken'><br>
-          			<input type='text' id='Dairy' placeholder='Dairy'><br>
-          			<input type='text' id='Veggies' placeholder='Veggies'><br>
-          			<input type='text' id='Fruits' placeholder='Fruits'><br>
-          			<input type='text' id='Grains' placeholder='Grains'></p>
+					<paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
+          			<paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
+          			<paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
+          			<paper-input   id='Veggies' placeholder='Veggies'></paper-input><br>
+          			<paper-input   id='Fruits' placeholder='Fruits'></paper-input><br>
+          			<paper-input   id='Grains' placeholder='Grains'></paper-input></p>
           	</div>
                       <paper-button raised type="submit" id="submitButton"> Add</paper-button>
 
     	</div> 
+    
+
+
     
 
  <!-- Right Side Panel -->
