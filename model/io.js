@@ -68,11 +68,13 @@ function parse_time_series(series) {
 function get_org_feature(firebasepath, org, feature){
 	var path = firebasepath + "/orgs/" + org + "/data/" + feature + "/series/";
 	var featureRef = new Firebase(path)
+	return_value = new Object()
 	featureRef.on("value", function(snapshot) {
-		return parse_time_series(snapshot.val());
+		return_value = parse_time_series(snapshot.val());
 	}, function (errorObject) {
   		console.log("The read failed: " + errorObject.code);
 	});
+	return return_value;
 }
 
 function getvalue(date, arr) {
