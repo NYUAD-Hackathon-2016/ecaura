@@ -26,27 +26,61 @@ background-color:#388E3C;
 
 
      }
+
+         paper-button.score {
+background-color:#388E3C;
+    color: white;   
+
+
+     }
+
 #OutputBox {
     position: relative;
     float: right;
     width: 65%;
     height: 100vh;
-    background-color: white;
+    background-colotir: white;
 }#InputVisualization {
     position: relative;
-    float: right;
+    float: left;
     width: 100%;
-    height: 50%;
-    border-bottom: 1px solid black;
+
+    height: 40vh;
+    border-bottom: 2px dashed #ccc;
     background-color: white;
     overflow-y: scroll;
     overflow-x: hidden;
-}#OverallVisualization {
+}
+#InputVisualization svg{
+    width: 600px;
+    display:block;
+    margin: auto;
+    top:100px;
+}
+#top-title, #bottom-title{
+    z-index: 1000;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#top-title, #bottom-title h3{
+    text-align: center;
+}
+
+
+#OverallVisualization {
     position: relative;
     float: right;
     width: 100%;
     height: 40%;
+
     background-color: white;
+}
+
+#OverallVisualization svg{
+    width: 600px;
+    display:block;
+    margin: auto;
 }
 li {
     display: block;
@@ -70,9 +104,5 @@ padding-bottom: 3px;
             height:10%;
             width: 100%;
             }
-#legenddiv li { float: left; margin-right: 10px; }
+#legenddiv li { float: left; margin-left: 7%; }
 #legenddiv span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
-
-/*This is to style the headings within each tab, e.g. Water, Fuel, etc.*/
-.ParameterHeading {}
-Add Comment

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src='io.js'></script>
+  </head>
+  <body>
+    <div id='messagesDiv'></div>
+    <input type='text' id='nameInput' placeholder='Name'>
+    <input type='text' id='monthInput' placeholder='Month'>
+    <input type='text' id='yearInput' placeholder='Year'>
+    <input type='text' id='featureInput' placeholder='Feature (ex. electricity)'>
+    <input type='text' id='valueInput' placeholder='Value'>
+    <input type="submit" value="Add" class="button" id="submitButton"/>
+    <script>
+    var firebasepath = "https://ecaura.firebaseIO.com"
+
+	  var myDataRef = new Firebase(firebasepath);
+	  myDataRef.on('value', function(snapshot) {
+	        //get_feature(firebasepath, "electricity")
+	        var x = get_org(firebasepath, "nyuad")
+	        console.log(x)
+	      });
+      $('#submitButton').on('click', function () {
+          var name = $('#nameInput').val();
+          var month = $('#monthInput').val();
+          var year = $('#yearInput').val();
+          var feature = $('#featureInput').val();
+          var val = $('#valueInput').val();
+
+          var newdate = year + " " + month
+          set_date(firebasepath, name, feature, newdate, {date: newdate, value:val})
+qq          $('#featureInput').val('');
+          $('#valueInput').val('');  
+
+      });
+      
+      function displayChatMessage(name, text) {
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+      };
+    </script>
+  </body>
+</html>
