@@ -73,7 +73,12 @@ path {
         <option value='2019'>2019</option>
         <option value='2020'>2020</option>
         </select> 
-        <br>
+        <span id= "user">
+         &nbsp;
+           <paper-button raised type="submit" > nyuad   &#9660;</paper-button>    
+        &nbsp;    &nbsp;       
+        </span>
+       </div>
         </div>
 
     <!-- Left Side Form -->
@@ -216,7 +221,7 @@ path {
     }
 
     function make_recommendations() {
-        recommendations = "If you used " + Math.floor(Math.random() * 50) + " percent less electricity, you would save" + Math.floor(Math.random() * 1000000) + "AED. Your score puts you " + Math.floor(Math.random() * 25) + 5 + "percent better than the industry average." )
+        recommendations = "If you used " + Math.floor(Math.random() * 50) + " percent less electricity, you would save" + Math.floor(Math.random() * 1000000) + "AED. Your score puts you " + Math.floor(Math.random() * 25) + 5 + "percent better than the industry average." 
         return recommendations
     }
 
