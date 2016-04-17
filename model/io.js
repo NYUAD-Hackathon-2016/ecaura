@@ -47,6 +47,8 @@ function get_average_series(firebasepath, feature) {
 // Adds a single data to the database.
 // set_date(firebasepath, "AppleInc", "electricity", "2015 June", {date: "2015 June", value:500})
 function set_date(firebasepath, org, feature, date, dateobject) {
+	add_to_date(firebasepath, dateobject.date, dateobject.value, feature)
+
 	var path = firebasepath + "/orgs/" + org + "/data/" + feature + "/series/" + date;
 	var dateRef = new Firebase(path);
 	dateRef.set(dateobject);
@@ -133,18 +135,18 @@ function get_feature(firebasepath, feature){
 function get_score(firebasepath, org) {
 	var obj = get_org(firebasepath, org)
 	console.log(obj)
-	diff = 0.0
-	results = new Array()
+	res = new Object()
 	for (feature in obj) {
 		console.log(feature)
+		results = new Array()
 		var averages = get_average_series(firebasepath, feature)
 		for (var i in obj[feature]) {
 			var val = obj[feature][i]["value"]
 			var avg = getvalue(obj[feature][i]['date'], averages)
-			results.push({date: obj[feature][i]['date'], diff:(val - avg)/avg})
-			console.log(diff)
+			results.push({date: obj[feature][i]['date'], value: (val - avg)/avg})
 		}
+		res[feature] = results
 	}
-	return results
+	return res
 }
 
