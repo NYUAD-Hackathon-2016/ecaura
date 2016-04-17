@@ -29,7 +29,7 @@ function get_average_series(firebasepath, feature) {
 	dateRef.orderByChild(feature + "/feature").equalTo(feature).on("value", function (snapshot) {
 		//console.log(snapshot.val())
 		p = snapshot.val()
-		console.log(p)
+		//console.log(p)
 		// For each org, grab the orgname and the series
 		for (var date in p) {
 		  if (p.hasOwnProperty(date)) {
@@ -40,7 +40,7 @@ function get_average_series(firebasepath, feature) {
 		//console.log(results)
 		//return results
 	});
-	console.log(results)
+	//console.log(results)
 	return results
 }
 
@@ -76,8 +76,8 @@ function get_org_feature(firebasepath, org, feature){
 }
 
 function getvalue(date, arr) {
-	console.log(arr)
-	console.log(date)
+	//console.log(arr)
+	//console.log(date)
 	for (elem in arr) {
 		if (arr[elem]["date"] === date) {
 
@@ -134,10 +134,10 @@ function get_feature(firebasepath, feature){
 
 function get_score(firebasepath, org) {
 	var obj = get_org(firebasepath, org)
-	console.log(obj)
+	//console.log(obj)
 	res = new Object()
 	for (feature in obj) {
-		console.log(feature)
+		//console.log(feature)
 		results = new Array()
 		var averages = get_average_series(firebasepath, feature)
 		for (var i in obj[feature]) {

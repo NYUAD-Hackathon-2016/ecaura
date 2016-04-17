@@ -1,4 +1,5 @@
 function add_series_to_svg(data, parseDate, divid) {
+    console.log(data)
 	// Set the dimensions of the canvas / graph
 	// Set the ranges
 
@@ -58,7 +59,9 @@ function add_series_to_svg(data, parseDate, divid) {
     // Add the valueline path.
     svg.append("path")
         .attr("class", "line")
-        .attr("d", valueline(data));
+        .attr("d", valueline(data))
+        .attr("stroke", "blue")
+        .attr("stroke-width", 2);;
 
     // Add the X Axis
     svg.append("g")
