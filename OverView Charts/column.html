@@ -2,9 +2,6 @@
 <meta charset="utf-8">
 <style>
 
-body {
-  font: 10px sans-serif;
-}
 
 .axis path,
 .axis line {
@@ -22,28 +19,11 @@ body {
 }
 
 </style>
-<head>
-    <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
-    <link rel='stylesheet' type='text/css' href='/resources/tutorial/css/example.css'>
-    <link rel='stylesheet' type='text/css' href='../index.css'>
-	<link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-
-        <script src='../io.js'></script>
-    <script src='../plot.js'></script>
-</head>
 <body>
-
+<script src="//d3js.org/d3.v3.min.js"></script>
 <script>
-var firebasepath = "https://ecaura.firebaseIO.com"
-var myDataRef = new Firebase(firebasepath);
 
-		
-		
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 50, right: 20, bottom: 60, left: 60},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -56,7 +36,7 @@ var y = d3.scale.linear()
     .range([height, 0]);
 
 var color = d3.scale.ordinal()
-    .range(["#98abc5", "#d0743c"]);
+    .range(["#AEC6E8", "#1F78B4"]);
 
 var xAxis = d3.svg.axis()
     .scale(x0)
@@ -73,19 +53,9 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-//d3.json("column.json", function(error, data) {
- // if (error) throw error;
-var myDataRef = new Firebase(firebasepath);
-	  
-myDataRef.on('value', function(snapshot) {
-          //get_feature(firebasepath, "electricity")
-		  console.log("hi")
-        d3.select("svg").remove();
-        var x1 = get_feature(firebasepath, "water");//get_org_feature(firebasepath, "nyuad", "water");
-          console.log(x1);
-          data = x1["water"]
-        console.log(data)
-		
+d3.json("column.json", function(error, data) {
+  if (error) throw error;
+
   var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "Date"; });
 
   data.forEach(function(d) {
@@ -96,21 +66,41 @@ myDataRef.on('value', function(snapshot) {
   x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
   y.domain([0, d3.max(data, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
 
+  svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "25px") 
+        .style("text-decoration", "bold")  
+        .text("Company 1's Carbon Emission from overall vs average");
+  
   svg.append("g")
+		//.attr("class", "heading")
+		//.append("text")
+		//.style("text-anchor", "start")
+		//.text("Company 1's Carbon Emission from overall vs average")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+	  .append("text")	  
+	  .attr("x", 450)
+	  .attr("y", 40)
+		.attr("dx", ".71em")
+	  .style("text-anchor", "start")
+	  .text("Month");
 
   svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 6)
+      .attr("x", -180)
+      .attr("y", -50)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Electricity");
-
+      .text("Carbon Emissions");
+	  
+	  
   var Date = svg.selectAll(".Date")
       .data(data)
     .enter().append("g")
