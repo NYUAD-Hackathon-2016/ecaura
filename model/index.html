@@ -159,17 +159,12 @@ path {
                       <paper-button raised id="clickMe" type="button" value="score");> Get Score!</paper-button>
 
       </div> 
-    
-
-
-    
 
  <!-- Right Side Panel -->
 
   </div>
       <div id="OutputBox">
-          <div id="top-title">
-              <h3>Heading</h3>
+          <div id="top-title"><h3>Water</h3>
           </div>
           <div id="InputVisualization"></div>
           <div id="bottom-title">
@@ -208,7 +203,14 @@ path {
         return current_graph;
     }
 
+
     function update_graphs() {
+          var str = get_current_tab();
+          str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                return letter.toUpperCase();
+          });
+         $("#top-title h3").html(str);
+
       current_graph = $(".iron-selected").attr("href")
         current_graph = current_graph.substring(1, current_graph.length);
         //console.log(current_graph)
