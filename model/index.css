@@ -8,6 +8,12 @@
     background-color: #EFEFEF;
 }
 
+#user{
+    float: right;
+    color: blue;
+ 
+    
+}
 
 paper-tabs paper-tab.iron-selected{
     background-color: #1B5E20;
