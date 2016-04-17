@@ -74,7 +74,7 @@ function get_org_feature(firebasepath, org, feature){
 	}, function (errorObject) {
   		console.log("The read failed: " + errorObject.code);
 	});
-	reutrn return_value;
+	return return_value;
 }
 
 function getvalue(date, arr) {
