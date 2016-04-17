@@ -147,32 +147,48 @@ path {
             <div id="food" class="tab-pane fade">
               <p class="ParameterDescription">
             <!-- SubContent for each tab -->
-          <paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
-                <paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
-                <paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
-                <paper-input   id='Veggies' placeholder='Veggies'></paper-input><br>
-                <paper-input   id='Fruits' placeholder='Fruits'></paper-input><br>
-                <paper-input   id='Grains' placeholder='Grains'></paper-input></p>
+
+					
+          	
+   
+          			<paper-input  id='Beef' placeholder='Amount of Beef (kg/month)'></paper-input><br>
+          			<paper-input   id='Chicken' placeholder='Chicken (kg/month)'></paper-input><br>
+          			<paper-input  id='Dairy' placeholder='Dairy (kg/month)'></paper-input><br>
+          			<paper-input   id='Veggies' placeholder='Veggies (kg/month)'></paper-input><br>
+          			<paper-input   id='Fruits' placeholder='Fruits (kg/month)'></paper-input><br>
+          			<paper-input   id='Grains' placeholder='Grains (kg/month)'></paper-input></p>
             </div>
 
-                      <paper-button raised type="submit" id="submitButton"> Add</paper-button> <br> <br> <br>
-                      <paper-button raised id="clickMe" type="button" value="score");> Get Score!</paper-button>
+ 						<paper-button raised class="custom green" id="submitButton"> Add</paper-button>
+                       <paper-button raised id="clickMe" class="custom score" type="button" value="score"> Get Score</paper-button>
 
       </div> 
+</div>
+    
+
 
  <!-- Right Side Panel -->
 
-  </div>
       <div id="OutputBox">
           <div id="top-title"><h3>Water</h3>
           </div>
           <div id="InputVisualization"></div>
           <div id="bottom-title">
             <h3>E Score</h3>
+
+            <div id="legenddiv">
+        	<ul>
+            <li><span class="Water" style="background-color: black;"></span> Water</li>
+            <li><span class="Waste" style="background-color: orange;"></span>Waste</li>
+            <li><span class="Fuel" style="background-color: green;"></span> Fuel</li>
+            <li><span class="Electricity" style="background-color: blue;"></span>Electricity</li>
+            <li><span class="Food" style="background-color: red;"></span> Food</li>
+            </ul>
+            </div>
           </div>
           <div id="OverallVisualization"></div>
       </div>
-  </div>
+  
     
     
     <script>
