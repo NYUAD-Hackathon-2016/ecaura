@@ -89,9 +89,6 @@ function add_many_series_to_svg(data_arr, parseDate, divid) {
     var width = 530
     var height = 200
 
-    
-
-
     var x = d3.time.scale().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 
@@ -121,14 +118,19 @@ function add_many_series_to_svg(data_arr, parseDate, divid) {
         return a.date - b.date;
     }
 
+    new_data_arr = new Object()
     for (feature in data_arr) {
-            data_arr[feature].forEach(function(d) {
-                d.date = parseDate(d.date);
-                d.value = +d.value;
-            });
-        data_arr[feature] = data_arr[feature].sort(sortByDateAscending);
+            if ((feature == "water") ||  (feature == "electricity") ||  (feature == "waste") ||  (feature == "fuel") || (feature == "food")) {
+                    data_arr[feature].forEach(function(d) {
+                        d.date = parseDate(d.date);
+                        d.value = +d.value;
+                    });
+                new_data_arr[feature] = data_arr[feature].sort(sortByDateAscending);
+            }
+
     }
-    
+    console.log(new_data_arr)
+    data_arr = new_data_arr;
 
     console.log(data_arr)
     var flattened = new Array()
@@ -146,12 +148,18 @@ function add_many_series_to_svg(data_arr, parseDate, divid) {
     x.domain(d3.extent(flattened, function(d) { return d.date; }));
     y.domain([d3.min(flattened, function(d) { return d.value; }), d3.max(flattened, function(d) { return d.value; })]);
 
+    colors = ["blue", "red", "green", "orange", "black"]
     //Add the valueline path.
+    counter = 0
     for (i in data_arr) {
         //console.log(data_arr[i])
         svg.append("path")
-            .attr("class", "line")
-            .attr("d", valueline(data_arr[i]));
+            //.attr("class", "line")
+            .attr("d", valueline(data_arr[i]))
+            .attr("stroke", colors[counter])
+            .attr("stroke-width", 2);
+        counter = counter + 1
+
     }
 
 

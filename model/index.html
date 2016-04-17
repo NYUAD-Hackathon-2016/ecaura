@@ -2,8 +2,6 @@
 <html>
 <style>
 path { 
-    stroke: steelblue;
-    stroke-width: 2;
     fill: none;
 }
 
@@ -324,6 +322,7 @@ path {
             set_date(firebasepath, name, "food", newdate, {date: newdate, value:food_total} )
           }
 
+        d3.selectAll("#OverallVisualization > *").remove();
         var averages = get_score(firebasepath, name)
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
 
