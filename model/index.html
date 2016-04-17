@@ -198,8 +198,10 @@ path {
 
     myDataRef.on('value', function(snapshot) {
 
-        console.log($(".iron-selected").attr("href"));
-        console.log($(".iron-selected").value);
+        current_graph = $(".iron-selected").attr("href")
+        current_graph = current_graph.substring(1, current_graph.length);
+        console.log(current_graph)
+        //console.log($(".iron-selected").value);
         console.log("Change found.")
           //get_feature(firebasepath, "electricity")
         console.log(d3.select("svg"))
@@ -209,7 +211,7 @@ path {
 
         var x1 = get_org(firebasepath, "nyuad")
           console.log(x1)
-          data = x1["water"]
+          data = x1[current_graph]
 
         console.log(data)
         if (data) {
