@@ -197,6 +197,12 @@ path {
           }  
     }
 
+    function get_current_tab() {
+        current_graph = $(".iron-selected").attr("href");
+        current_graph = current_graph.substring(1, current_graph.length);
+        return current_graph;
+    }
+
     function update_graphs() {
       current_graph = $(".iron-selected").attr("href")
         current_graph = current_graph.substring(1, current_graph.length);
