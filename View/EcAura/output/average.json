@@ -1,0 +1,48 @@
+[
+	 {
+    "date": "2013 Jan",
+    "water": 12,
+    "electricity": 11,
+    "waste": 25,
+	"fuel": 10
+  }, {
+    "date": "2013 Apr",
+    "water": 1,
+    "electricity": 20,
+    "waste": 5,
+	"fuel": 20
+  },{
+    "date": "2014 Apr",
+    "water": 12,
+    "electricity": 10,
+    "waste": 20,
+	"fuel": 10
+  },{
+    "date": "2015 Jul",
+    "water": 15,
+    "electricity": 14,
+    "waste": 21,
+	"fuel": 10
+  },
+  {
+    "date": "2016 Jan",
+    "water": 29,
+    "electricity": 20,
+    "waste": 21,
+	"fuel": 10
+  },
+{
+    "date": "2016 Mar",
+    "water": 10,
+    "electricity": 5,
+    "waste": 12,
+	"fuel": 20
+  }, 
+   {
+    "date": "2016 Oct",
+    "water": 9,
+    "electricity": 6,
+    "waste": 17,
+	"fuel": 8
+  }
+]

@@ -26,7 +26,7 @@ body {
     <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
     <link rel='stylesheet' type='text/css' href='/resources/tutorial/css/example.css'>
     <link rel='stylesheet' type='text/css' href='../index.css'>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -41,8 +41,8 @@ body {
 var firebasepath = "https://ecaura.firebaseIO.com"
 var myDataRef = new Firebase(firebasepath);
 
-		
-		
+    
+    
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -76,16 +76,16 @@ var svg = d3.select("body").append("svg")
 //d3.json("column.json", function(error, data) {
  // if (error) throw error;
 var myDataRef = new Firebase(firebasepath);
-	  
+    
 myDataRef.on('value', function(snapshot) {
           //get_feature(firebasepath, "electricity")
-		  console.log("hi")
+      console.log("hi")
         d3.select("svg").remove();
         var x1 = get_feature(firebasepath, "water");//get_org_feature(firebasepath, "nyuad", "water");
           console.log(x1);
           data = x1["water"]
         console.log(data)
-		
+    
   var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "Date"; });
 
   data.forEach(function(d) {
