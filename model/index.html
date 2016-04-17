@@ -84,7 +84,7 @@ path {
         </div>
 
 
-        <paper-tabs >
+      <paper-tabs id="papertabs">
   		<paper-tab data-toggle="tab" href="#menu1">Water</paper-tab>
          <paper-tab data-toggle="tab" href="#menu2">Electricity</paper-tab>
           <paper-tab data-toggle="tab" href="#menu3">Waste</paper-tab>
@@ -184,6 +184,8 @@ path {
 
     // Parse the date / time
     var parseDate = d3.time.format("%Y %B").parse;
+          var fields = ["WaterReservoir", "GroundWater", "DesalinatedWater", "RecycledWater", "Nuclear", "Solar", "Wind", "HydroElectric", 
+          "FossilFuels", "Plastic", "Paper", "Glass", "Metal", "Landfill", "NaturalGas", "FuelOil", "LPG", "Beef", "Chicken", "Dairy", "Veggies", "Fruits", "Grains"]
 
     console.log("About to create listener")
 
@@ -220,9 +222,9 @@ path {
           var year = $('#yearInput').val();
 
           var water_ones = ["WaterReservoir", "GroundWater", "DesalinatedWater", "RecycledWater"]
-          var electricity_ones = ["Solar", "Wind", "HydroElectric", "FossilFuels"]
+          var electricity_ones = ["Nuclear", "Solar", "Wind", "HydroElectric", "FossilFuels"]
           var waste_ones = ["Plastic", "Paper", "Glass", "Metal", "Landfill"]
-          var fuel_ones = ["FuelOil", "LPG"]
+          var fuel_ones = ["NaturalGas", "FuelOil", "LPG"]
           var food_ones = ["Beef", "Chicken", "Dairy", "Veggies", "Fruits", "Grains"]
 
           water_total = 0
@@ -321,8 +323,15 @@ path {
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
 
       });
-      $('.nav-tabs').on('click', function() {
+      $('#papertabs').on('click', function() {
         console.log("Tab was clicked!");
+
+          for (i in fields) {
+            console.log($("#" + fields[i]))
+            $("#" + fields[i]).val('');
+          }   
+
+
  
       });
       $('paper-tab[href="#menu1"]').on('click', function() {
