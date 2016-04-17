@@ -84,17 +84,17 @@ path {
         </div>
 
 
-      <paper-tabs id="papertabs">
-  		<paper-tab data-toggle="tab" href="#menu1">Water</paper-tab>
-         <paper-tab data-toggle="tab" href="#menu2">Electricity</paper-tab>
-          <paper-tab data-toggle="tab" href="#menu3">Waste</paper-tab>
-          <paper-tab data-toggle="tab" href="#menu4">Fuel</paper-tab>
-          <paper-tab data-toggle="tab" href="#menu5">Food</paper-tab></paper-tabs>
+      <paper-tabs id="papertabs" selected="0">
+  		<paper-tab data-toggle="tab" href="#water" data-id:"water">Water</paper-tab>
+         <paper-tab data-toggle="tab" href="#electricity">Electricity</paper-tab>
+          <paper-tab data-toggle="tab" href="#waste">Waste</paper-tab>
+          <paper-tab data-toggle="tab" href="#fuel">Fuel</paper-tab>
+          <paper-tab data-toggle="tab" href="#food">Food</paper-tab></paper-tabs>
         <!-- Content for each tab -->
         <div class="tab-content"> 
 
 
-          	<div id="menu1" class="tab-pane fade in active">
+          	<div id="water" class="tab-pane fade in active">
 
 
 
@@ -110,7 +110,7 @@ path {
          	</div>
           
 
-          	<div id="menu2" class="tab-pane fade">
+          	<div id="electricity" class="tab-pane fade">
             	<p class="ParameterDescription">
             	 <!-- SubContent for each tab -->
             	<paper-input   id='Nuclear' label='Nuclear (kWh/month)'></paper-input><br>
@@ -123,7 +123,7 @@ path {
           
 
 
-          	<div id="menu3" class="tab-pane fade">
+          	<div id="waste" class="tab-pane fade">
             	<p class="ParameterDescription"> 
     	    <!-- SubContent for each tab -->
 
@@ -135,7 +135,7 @@ path {
           	</div>
           
 
-          	<div id="menu4" class="tab-pane fade">
+          	<div id="fuel" class="tab-pane fade">
             	<p class="ParameterDescription">
             <!-- SubContent for each tab -->
 					<paper-input  id='NaturalGas' label='Natural Gas (litres/month)'></paper-input><br>
@@ -144,7 +144,7 @@ path {
           	</div>
           
 
-          	<div id="menu5" class="tab-pane fade">
+          	<div id="food" class="tab-pane fade">
             	<p class="ParameterDescription">
             <!-- SubContent for each tab -->
 					<paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
@@ -189,9 +189,17 @@ path {
 
     console.log("About to create listener")
 
+    function clear_fields(fields) {
+       for (i in fields) {
+            console.log($("#" + fields[i]))
+            $("#" + fields[i]).val('');
+          }  
+    }
+
     myDataRef.on('value', function(snapshot) {
 
-        //$(".iron-selected").trigger( "click" );
+        console.log($(".iron-selected").attr("href"));
+        console.log($(".iron-selected").value);
         console.log("Change found.")
           //get_feature(firebasepath, "electricity")
         console.log(d3.select("svg"))
@@ -245,9 +253,12 @@ path {
             $("#" + feature).val('');
           }
           if (water_total > 0) {
+
             console.log("Added some waters")
             d3.select("svg").remove();
             set_date(firebasepath, name, "water", newdate, {date: newdate, value:water_total} )
+            clear_fields(water_ones)
+
           }
 
 
@@ -267,6 +278,8 @@ path {
             console.log("Added some electricity")
             d3.select("svg").remove();
             set_date(firebasepath, name, "electricity", newdate, {date: newdate, value:electricity_total} )
+            clear_fields(electricity_ones)
+
           }
 
           for (i in waste_ones) {
@@ -283,6 +296,8 @@ path {
             console.log("Added some wastes")
             d3.select("svg").remove();
             set_date(firebasepath, name, "waste", newdate, {date: newdate, value:waste_total} )
+            clear_fields(waste_ones)
+
           }
 
           for (i in fuel_ones) {
@@ -300,6 +315,8 @@ path {
            console.log("Added some fuels")
 
             set_date(firebasepath, name, "fuel", newdate, {date: newdate, value:fuel_total} )
+            clear_fields(fuel_ones)
+
           }
 
           for (i in food_ones) {
@@ -316,11 +333,14 @@ path {
             d3.select("svg").remove();
             console.log("Added some electricity")
             set_date(firebasepath, name, "food", newdate, {date: newdate, value:food_total} )
+            clear_fields(food_ones)
           }
 
         d3.selectAll("#OverallVisualization > *").remove();
         var averages = get_score(firebasepath, name)
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
+
+         
 
       });
       $('#papertabs').on('click', function() {
@@ -334,7 +354,7 @@ path {
 
  
       });
-      $('paper-tab[href="#menu1"]').on('click', function() {
+      $('paper-tab[href="#water"]').on('click', function() {
         d3.select("svg").remove();
         d3.select("svg").remove();
         d3.select("svg").remove();
@@ -347,7 +367,7 @@ path {
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
       });
 
-      $('paper-tab[href="#menu2"]').on('click', function() {
+      $('paper-tab[href="#electricity"]').on('click', function() {
         d3.select("svg").remove();
         d3.select("svg").remove();
         d3.select("svg").remove();
@@ -359,7 +379,7 @@ path {
           var averages = get_score(firebasepath, "nyuad")
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
         });
-      $('paper-tab[href="#menu3"]').on('click', function() {
+      $('paper-tab[href="#waste"]').on('click', function() {
         d3.select("svg").remove();
         d3.select("svg").remove();
         d3.select("svg").remove();
@@ -371,7 +391,7 @@ path {
           var averages = get_score(firebasepath, "nyuad")
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")   
         });
-      $('paper-tab[href="#menu4"]').on('click', function() {
+      $('paper-tab[href="#fuel"]').on('click', function() {
         d3.select("svg").remove();
         d3.select("svg").remove();
         d3.select("svg").remove();
@@ -383,7 +403,7 @@ path {
           var averages = get_score(firebasepath, "nyuad")
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
       });
-      $('paper-tab[href="#menu5"]').on('click', function() {
+      $('paper-tab[href="#food"]').on('click', function() {
         d3.select("svg").remove();
         d3.select("svg").remove();
         d3.select("svg").remove();
