@@ -35,57 +35,57 @@ path {
   </head>
   <body>
 
+<div id="logo">
 
+          <img src="ecauragreen.png" alt="logo" height="25px" >
+
+            <select id='monthInput' >
+        <option value=''>Month</option>
+        <option selected value='january'>Jan</option>
+        <option value='february'>Feb</option>
+        <option value='march'>Mar</option>
+        <option value='april'>Apr</option>
+        <option value='may'>May</option>
+        <option value='june'>Jun</option>
+        <option value='july'>Jul</option>
+        <option value='august'>Aug</option>
+        <option value='september'>Sep</option>
+        <option value='october'>Oct</option>
+        <option value='november'>Nov</option>
+        <option value='december'>Dec</option>
+        </select> 
+
+        <select id='yearInput'>
+        <option value=''>Year</option>
+        <option value='2006'>2006</option>
+        <option value='2007'>2007</option>
+        <option value='2008'>2008</option>
+        <option value='2009'>2009</option>
+        <option value='2010'>2010</option>
+        <option value='2011'>2011</option>
+        <option value='2012'>2012</option>
+        <option value='2013'>2013</option>
+        <option value='2014'>2014</option>
+        <option value='2015'>2015</option>
+        <option selected value='2016'>2016</option>
+        <option value='2017'>2017</option>
+        <option value='2018'>2018</option>
+        <option value='2019'>2019</option>
+        <option value='2020'>2020</option>
+        </select> 
+        <br>
+        </div>
 
     <!-- Left Side Form -->
     <div id="ParameterBox">
         <!-- Tab Titles (Parameters) -->
         
         <!-- Logo and Date -->
-       	<div id="logo">
-
-        	<img src="ecauragreen.png" alt="logo" height="20px" >
-
-          	<select id='monthInput' >
-    		<option value=''>Month</option>
-		    <option selected value='january'>Jan</option>
-		    <option value='february'>Feb</option>
-		    <option value='march'>Mar</option>
-		    <option value='april'>Apr</option>
-		    <option value='may'>May</option>
-		    <option value='june'>Jun</option>
-		    <option value='july'>Jul</option>
-		    <option value='august'>Aug</option>
-		    <option value='september'>Sep</option>
-		    <option value='october'>Oct</option>
-		    <option value='november'>Nov</option>
-		    <option value='december'>Dec</option>
-		    </select> 
-
-		    <select id='yearInput'>
-		    <option value=''>Year</option>
-		    <option value='2006'>2006</option>
-		    <option value='2007'>2007</option>
-		    <option value='2008'>2008</option>
-		    <option value='2009'>2009</option>
-		    <option value='2010'>2010</option>
-		    <option value='2011'>2011</option>
-		    <option value='2012'>2012</option>
-		    <option value='2013'>2013</option>
-		    <option value='2014'>2014</option>
-		    <option value='2015'>2015</option>
-		    <option selected value='2016'>2016</option>
-		    <option value='2017'>2017</option>
-		    <option value='2018'>2018</option>
-		    <option value='2019'>2019</option>
-		    <option value='2020'>2020</option>
-		    </select> 
-    		<br>
-        </div>
+        
 
 
       <paper-tabs id="papertabs" selected="0">
-  		<paper-tab data-toggle="tab" href="#water" data-id:"water">Water</paper-tab>
+      <paper-tab data-toggle="tab" href="#water" data-id:"water">Water</paper-tab>
          <paper-tab data-toggle="tab" href="#electricity">Electricity</paper-tab>
           <paper-tab data-toggle="tab" href="#waste">Waste</paper-tab>
           <paper-tab data-toggle="tab" href="#fuel">Fuel</paper-tab>
@@ -94,59 +94,60 @@ path {
         <div class="tab-content"> 
 
 
-          	<div id="water" class="tab-pane fade in active">
+            <div id="water" class="tab-pane fade in active">
 
 
 
-          		
-            	<p class="ParameterDescription"> 
+              
+              <p class="ParameterDescription"> 
             <!-- SubContent for each tab -->
            
-          			<paper-input id='WaterReservoir' label='Water Reservoir (litres/month)'></paper-input><br>
-          			<paper-input id='GroundWater' label='Ground Water (litres/month)'></paper-input><br>
-          			<paper-input id='DesalinatedWater' label='Desalinated Water (litres/month)'></paper-input><br>
-          			<paper-input id='RecycledWater' label='RecycledWater (litres/month)'></paper-input><br>          		
-            	</p>
-         	</div>
+                <paper-input id='WaterReservoir' label='Water Reservoir (litres/month)'></paper-input><br>
+                <paper-input id='GroundWater' label='Ground Water (litres/month)'></paper-input><br>
+                <paper-input id='DesalinatedWater' label='Desalinated Water (litres/month)'></paper-input><br>
+                <paper-input id='RecycledWater' label='RecycledWater (litres/month)'></paper-input><br>             
+              </p>
+          </div>
           
 
-          	<div id="electricity" class="tab-pane fade">
-            	<p class="ParameterDescription">
-            	 <!-- SubContent for each tab -->
-            	<paper-input   id='Nuclear' label='Nuclear (kWh/month)'></paper-input><br>
-          			<paper-input   id='Solar' label='Solar (kWh/month)'></paper-input><br>
-          			<paper-input  id='Wind' label='Wind (kWh/month)'></paper-input><br>
-          			<paper-input   id='HydroElectric' label='HydroElectric (kWh/month)'></paper-input><br>
-          			<paper-input  id='FossilFuels' label='Fossil Fuels (kWh/month)'></paper-input>
-          		</p>
-          	</div>
+            <div id="electricity" class="tab-pane fade">
+              <p class="ParameterDescription">
+               <!-- SubContent for each tab -->
+              <paper-input   id='Nuclear' label='Nuclear (kWh/month)'></paper-input><br>
+                <paper-input   id='Solar' label='Solar (kWh/month)'></paper-input><br>
+                <paper-input  id='Wind' label='Wind (kWh/month)'></paper-input><br>
+                <paper-input   id='HydroElectric' label='HydroElectric (kWh/month)'></paper-input><br>
+                <paper-input  id='FossilFuels' label='Fossil Fuels (kWh/month)'></paper-input>
+              </p>
+            </div>
           
 
 
-          	<div id="waste" class="tab-pane fade">
-            	<p class="ParameterDescription"> 
-    	    <!-- SubContent for each tab -->
+            <div id="waste" class="tab-pane fade">
+              <p class="ParameterDescription"> 
+          <!-- SubContent for each tab -->
 
-            		<paper-input  id='Plastic' label='Plastic (kg/month)'></paper-input><br>
-          			<paper-input  id='Paper' label='Paper (kg/month)'></paper-input><br>
-          			<paper-input  id='Glass' label='Glass (kg/month)'></paper-input><br>
-          			<paper-input  id='Metal' label='Metal (kg/month)'></paper-input><br>
-          			<paper-input  id='Landfill' label='Landfill (kg/month)'></paper-input></p>
-          	</div>
+                <paper-input  id='Plastic' label='Plastic (kg/month)'></paper-input><br>
+                <paper-input  id='Paper' label='Paper (kg/month)'></paper-input><br>
+                <paper-input  id='Glass' label='Glass (kg/month)'></paper-input><br>
+                <paper-input  id='Metal' label='Metal (kg/month)'></paper-input><br>
+                <paper-input  id='Landfill' label='Landfill (kg/month)'></paper-input></p>
+            </div>
           
 
-          	<div id="fuel" class="tab-pane fade">
-            	<p class="ParameterDescription">
+            <div id="fuel" class="tab-pane fade">
+              <p class="ParameterDescription">
             <!-- SubContent for each tab -->
-					<paper-input  id='NaturalGas' label='Natural Gas (litres/month)'></paper-input><br>
-          			<paper-input id='FuelOil' label='Fuel Oil (litres/month)'></paper-input><br>
-          			<paper-input id='LPG' label='LPG (litres/month)'></paper-input></p>
-          	</div>
+          <paper-input  id='NaturalGas' label='Natural Gas (litres/month)'></paper-input><br>
+                <paper-input id='FuelOil' label='Fuel Oil (litres/month)'></paper-input><br>
+                <paper-input id='LPG' label='LPG (litres/month)'></paper-input></p>
+            </div>
           
 
-          	<div id="food" class="tab-pane fade">
-            	<p class="ParameterDescription">
+            <div id="food" class="tab-pane fade">
+              <p class="ParameterDescription">
             <!-- SubContent for each tab -->
+<<<<<<< HEAD
 					<paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
           			<paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
           			<paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
@@ -161,15 +162,31 @@ path {
           <paper-button raised id="clickMe" type="button" value="score" onclick=alert(get_score(firebasepath,nyuad););> Get Score!</paper-button>
           
   
+          <paper-input  id='Beef' placeholder='Amount of Beef '></paper-input><br>
+                <paper-input   id='Chicken' placeholder='Chicken'></paper-input><br>
+                <paper-input  id='Dairy' placeholder='Dairy'></paper-input><br>
+                <paper-input   id='Veggies' placeholder='Veggies'></paper-input><br>
+                <paper-input   id='Fruits' placeholder='Fruits'></paper-input><br>
+                <paper-input   id='Grains' placeholder='Grains'></paper-input></p>
+            </div>
+                      <paper-button raised type="submit" id="submitButton"> Add</paper-button>
+
+      </div> 
+    
+
+
+    
+
+>>>>>>> f8d72111364bfb48039a4b99e6134ef78da52eae
  <!-- Right Side Panel -->
 
-	</div>
-    	<div id="OutputBox">
-        	<div id="InputVisualization">
+  </div>
+      <div id="OutputBox">
+          <div id="InputVisualization">
           ​
-        	</div>
+          </div>
         <div id="OverallVisualization">
-        	<h1 class="Heading">OVERVIEW</h1>
+          <h1 class="Heading">OVERVIEW</h1>
         </div>
     </div>
     
@@ -196,9 +213,8 @@ path {
           }  
     }
 
-    myDataRef.on('value', function(snapshot) {
-
-        current_graph = $(".iron-selected").attr("href")
+    function update_graphs() {
+      current_graph = $(".iron-selected").attr("href")
         current_graph = current_graph.substring(1, current_graph.length);
         console.log(current_graph)
         //console.log($(".iron-selected").value);
@@ -221,6 +237,33 @@ path {
         var averages = get_score(firebasepath, "nyuad")
         d3.selectAll("#OverallVisualization > *").remove();
         add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
+    }
+
+    myDataRef.on('value', function(snapshot) {
+        update_graphs()
+        // current_graph = $(".iron-selected").attr("href")
+        // current_graph = current_graph.substring(1, current_graph.length);
+        // console.log(current_graph)
+        // //console.log($(".iron-selected").value);
+        // console.log("Change found.")
+        //   //get_feature(firebasepath, "electricity")
+        // console.log(d3.select("svg"))
+        // //d3.select('svg').remove();
+        // //d3.select('svg').remove();
+        // console.log(d3.select("svg"))
+
+        // var x1 = get_org(firebasepath, "nyuad")
+        //   console.log(x1)
+        //   data = x1[current_graph]
+
+        // console.log(data)
+        // if (data) {
+        //   d3.selectAll("#InputVisualization > *").remove();
+        //   add_series_to_svg(data, parseDate, "#InputVisualization");
+        // }
+        // var averages = get_score(firebasepath, "nyuad")
+        // d3.selectAll("#OverallVisualization > *").remove();
+        // add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
         
         });
       $('#submitButton').on('click', function () {
@@ -349,74 +392,15 @@ path {
         console.log("Tab was clicked!");
 
           for (i in fields) {
-            console.log($("#" + fields[i]))
+            //console.log($("#" + fields[i]))
             $("#" + fields[i]).val('');
           }   
+          update_graphs()
 
 
  
       });
-      $('paper-tab[href="#water"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["water"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
-      });
-
-      $('paper-tab[href="#electricity"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["electricity"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }      
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
-        });
-      $('paper-tab[href="#waste"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["oil"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }  
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")   
-        });
-      $('paper-tab[href="#fuel"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["fuel"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          } 
-          var averages = get_score(firebasepath, "nyuad")
-        add_many_series_to_svg(averages, parseDate, "#OverallVisualization")
-      });
-      $('paper-tab[href="#food"]').on('click', function() {
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        d3.select("svg").remove();
-        var x1 = get_org(firebasepath, "nyuad")
-          data = x1["food"]
-          if (data) {
-            add_series_to_svg(data, parseDate, "#InputVisualization")
-          }   
-          var averages = get_score(firebasepath, "nyuad")
-          add_many_series_to_svg(averages, parseDate, "#OverallVisualization")   
-        });
+      
 
 
       function displayChatMessage(name, text) {

@@ -3,32 +3,25 @@
     float: left;
     width: 35%;
     height: 100vh;
+    overflow-y: auto;
+    display:block;
     background-color: #EFEFEF;
 }
-
 paper-tabs paper-tab.iron-selected{
     background-color: #303F9F;
     color: white;
 }
-
 paper-tabs{
-    background-color: #69F0AE;
+   
     color:#1A237E;
+    background-color: #C5CAE9;
 }
-
 paper-input {
-
 padding-left: 15px;
-width:50%;
-
-
+width:65%;
 }
-
-
-
 paper-button{
      background-color: #E8EAF6;
-
 }
 #OutputBox {
     position: relative;
@@ -38,13 +31,22 @@ paper-button{
     background-color: white;
 }#InputVisualization {
     position: relative;
-    float: right;
+    float: left;
     width: 100%;
     height: 50vh;
     border-bottom: 1px solid black;
     background-color: white;
-    overflow: scroll;
-}#OverallVisualization {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#InputVisualization svg{
+    width: 600px;
+    display:block;
+    margin: auto;
+}
+
+
+#OverallVisualization {
     position: relative;
     float: right;
     width: 100%;
@@ -52,7 +54,11 @@ paper-button{
     background-color: white;
 }
 
-
+#OverallVisualization svg{
+    width: 600px;
+    display:block;
+    margin: auto;
+}
 li {
     display: block;
     color: #000;
@@ -60,19 +66,15 @@ li {
     vertical-align:middle;
     margin: 0px;
 }
-
-
 #logo img{
-
-margin: 6px;
-
-
+margin: 20px;
+padding-bottom: 3px;
 }
 #logo{
-    background-color: #DDD;
+    background-color: white;
+    width: 100%;
+            background-image: url(bk.png);
 }
-
-
 /*This is to style the headings within each tab, e.g. Water, Fuel, etc.*/
 .ParameterHeading {}
 Add Comment

@@ -56,11 +56,13 @@ function set_date(firebasepath, org, feature, date, dateobject) {
 
 // Convert from the database time series format to the visualize time series format
 function parse_time_series(series) {
+	console.log('entering time series');
 	var series_res = new Array();
   	for (var element in series) {
-  		series_res.push(series[element])
+  		series_res.push(series[element]);
   	}
-	return series_res
+  	console.log(series_res);
+	return series_res;
 }
 
 // Get the Time series for the organization "org", for the feature "feature"
@@ -68,11 +70,13 @@ function parse_time_series(series) {
 function get_org_feature(firebasepath, org, feature){
 	var path = firebasepath + "/orgs/" + org + "/data/" + feature + "/series/";
 	var featureRef = new Firebase(path)
+	return_value = new Object()
 	featureRef.on("value", function(snapshot) {
-		return parse_time_series(snapshot.val());
+		return_value = parse_time_series(snapshot.val());
 	}, function (errorObject) {
   		console.log("The read failed: " + errorObject.code);
 	});
+	return return_value;
 }
 
 function getvalue(date, arr) {
