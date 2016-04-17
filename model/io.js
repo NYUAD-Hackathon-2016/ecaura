@@ -56,11 +56,13 @@ function set_date(firebasepath, org, feature, date, dateobject) {
 
 // Convert from the database time series format to the visualize time series format
 function parse_time_series(series) {
+	console.log('entering time series');
 	var series_res = new Array();
   	for (var element in series) {
-  		series_res.push(series[element])
+  		series_res.push(series[element]);
   	}
-	return series_res
+  	console.log(series_res);
+	return series_res;
 }
 
 // Get the Time series for the organization "org", for the feature "feature"
