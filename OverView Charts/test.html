@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <script type="text/javascript" src='../model/io.js'></script>
+    <script type="text/javascript" src='../TestingLineChart/plot.js'></script>
+    <script src='https://cdn.firebase.com/js/client/2.3.0/firebase.js'></script>
+
+    <script type="text/javascript">
+          var firebasepath = "https://ecaura.firebaseIO.com"
+          console.log("Starting request")
+          var myDataRef = new Firebase(firebasepath);
+          console.log("Connected")
+
+          myDataRef.on('value', function(snapshot) {
+            console.log('entering...');
+            var average_data = get_average_series(firebasepath, 'water');
+            console.log(average_data);
+
+            var org_feature = get_org_feature(firebasepath, 'nyuad', 'electricity');
+            console.log(org_feature);
+          });
+    
+        // var average_water = [
+        //     {'date': "2016 Apr", 'value' : 1000},
+        //     {'date': "2016 May", 'value' : 1200},
+        //     {'date': "2016 June", 'value' : 1400},
+        //     {'date': "2016 July", 'value' : 1600},
+        // ];
+
+        // var nyuad_water = [
+        //     {'date': "2016 Apr", 'value' : 800},
+        //     {'date': "2016 May", 'value' : 1400},
+        //     {'date': "2016 June", 'value' : 1400},
+        //     {'date': "2016 July", 'value' : 1600},
+        // ];
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+[
+  {
+    "Date": "2016 Jan",
+    "Company": 270,
+    "Average": 449
+  },
+  {
+    "Date": "2016 Feb",
+    "Company": 202,
+    "Average": 327
+  },
+  {
+    "Date": "2016 Mar",
+    "Company": 120,
+    "Average": 214
+  },
+  {
+    "Date": "2016 Apr",
+    "Company": 114,
+    "Average": 193
+  },
+  {
+    "Date": "2016 June",
+    "Company": 202,
+    "Average": 327
+  },
+  {
+    "Date": "2016 July",
+    "Company": 120,
+    "Average": 214
+  },
+  {
+    "Date": "2016 Aug",
+    "Company": 114,
+    "Average": 193
+  }
+]
